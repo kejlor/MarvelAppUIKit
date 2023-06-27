@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OverdueNewWarningView: UIView {
+class HomeView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,7 +25,7 @@ class OverdueNewWarningView: UIView {
     }
 }
 
-extension OverdueNewWarningView {
+extension HomeView {
     func style() {
         translatesAutoresizingMaskIntoConstraints = false
     }
