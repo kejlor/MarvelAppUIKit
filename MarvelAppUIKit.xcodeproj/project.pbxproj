@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C15DCB32A4B024A00D2B1BB /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C15DCB22A4B024A00D2B1BB /* Keys.plist */; };
+		5C15DCB62A4B031C00D2B1BB /* APIKeyable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15DCB52A4B031C00D2B1BB /* APIKeyable.swift */; };
 		5C866EA12A4AF81F00F3305C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C866EA02A4AF81F00F3305C /* AppDelegate.swift */; };
 		5C866EAA2A4AF82200F3305C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C866EA92A4AF82200F3305C /* Assets.xcassets */; };
 		5C866EAD2A4AF82200F3305C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C866EAB2A4AF82200F3305C /* LaunchScreen.storyboard */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C15DCB22A4B024A00D2B1BB /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		5C15DCB52A4B031C00D2B1BB /* APIKeyable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyable.swift; sourceTree = "<group>"; };
 		5C866E9D2A4AF81F00F3305C /* MarvelAppUIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelAppUIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C866EA02A4AF81F00F3305C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C866EA92A4AF82200F3305C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -35,6 +39,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C15DCB12A4B023700D2B1BB /* Keys */ = {
+			isa = PBXGroup;
+			children = (
+				5C15DCB22A4B024A00D2B1BB /* Keys.plist */,
+			);
+			path = Keys;
+			sourceTree = "<group>";
+		};
+		5C15DCB42A4B030900D2B1BB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5C15DCB52A4B031C00D2B1BB /* APIKeyable.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		5C866E942A4AF81F00F3305C = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +74,8 @@
 		5C866E9F2A4AF81F00F3305C /* MarvelAppUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				5C15DCB42A4B030900D2B1BB /* Utils */,
+				5C15DCB12A4B023700D2B1BB /* Keys */,
 				5C866EB92A4B000200F3305C /* HomeView */,
 				5C866EA02A4AF81F00F3305C /* AppDelegate.swift */,
 				5C866EA92A4AF82200F3305C /* Assets.xcassets */,
@@ -130,6 +152,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C15DCB32A4B024A00D2B1BB /* Keys.plist in Resources */,
 				5C866EAD2A4AF82200F3305C /* LaunchScreen.storyboard in Resources */,
 				5C866EAA2A4AF82200F3305C /* Assets.xcassets in Resources */,
 			);
@@ -144,6 +167,7 @@
 			files = (
 				5C866EB72A4AFBF500F3305C /* HomeView.swift in Sources */,
 				5C866EB52A4AFBB700F3305C /* HomeViewController.swift in Sources */,
+				5C15DCB62A4B031C00D2B1BB /* APIKeyable.swift in Sources */,
 				5C866EA12A4AF81F00F3305C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
