@@ -19,6 +19,7 @@
 		5C15DCD22A4B090500D2B1BB /* ComicListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15DCD12A4B090500D2B1BB /* ComicListViewModel.swift */; };
 		5C15DCD72A4B099600D2B1BB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C15DCD92A4B099600D2B1BB /* Localizable.strings */; };
 		5C15DCDC2A4B09C000D2B1BB /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15DCDB2A4B09C000D2B1BB /* String+Ext.swift */; };
+		5C15DCDF2A4B148C00D2B1BB /* ComicsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15DCDE2A4B148C00D2B1BB /* ComicsListViewController.swift */; };
 		5C866EA12A4AF81F00F3305C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C866EA02A4AF81F00F3305C /* AppDelegate.swift */; };
 		5C866EAA2A4AF82200F3305C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C866EA92A4AF82200F3305C /* Assets.xcassets */; };
 		5C866EAD2A4AF82200F3305C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C866EAB2A4AF82200F3305C /* LaunchScreen.storyboard */; };
@@ -39,6 +40,7 @@
 		5C15DCD12A4B090500D2B1BB /* ComicListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicListViewModel.swift; sourceTree = "<group>"; };
 		5C15DCD82A4B099600D2B1BB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5C15DCDB2A4B09C000D2B1BB /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		5C15DCDE2A4B148C00D2B1BB /* ComicsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsListViewController.swift; sourceTree = "<group>"; };
 		5C866E9D2A4AF81F00F3305C /* MarvelAppUIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelAppUIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C866EA02A4AF81F00F3305C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C866EA92A4AF82200F3305C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 		5C15DCD02A4B08BD00D2B1BB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5C15DCDD2A4B13B800D2B1BB /* ComicsListView */,
 				5C866EB92A4B000200F3305C /* HomeView */,
 			);
 			path = Views;
@@ -133,6 +136,14 @@
 				5C15DCDB2A4B09C000D2B1BB /* String+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5C15DCDD2A4B13B800D2B1BB /* ComicsListView */ = {
+			isa = PBXGroup;
+			children = (
+				5C15DCDE2A4B148C00D2B1BB /* ComicsListViewController.swift */,
+			);
+			path = ComicsListView;
 			sourceTree = "<group>";
 		};
 		5C866E942A4AF81F00F3305C = {
@@ -252,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C15DCDF2A4B148C00D2B1BB /* ComicsListViewController.swift in Sources */,
 				5C15DCCB2A4B073300D2B1BB /* NetworkService.swift in Sources */,
 				5C866EB72A4AFBF500F3305C /* HomeView.swift in Sources */,
 				5C15DCB92A4B049B00D2B1BB /* Comic.swift in Sources */,
