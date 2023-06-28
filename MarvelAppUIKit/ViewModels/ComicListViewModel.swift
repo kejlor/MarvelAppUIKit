@@ -7,11 +7,15 @@
 
 import Foundation
 
-@MainActor
-final class ComicListViewModel: ObservableObject {
-    @Published var comics = [ComicViewModel]()
-    @Published var isShowingAlertGetComics = false
-    @Published var isShowingAlertGetMoreComics = false
+protocol ComicListViewModelDelegate: AnyObject {
+    func didFetchComics(_ comics: [ComicViewModel])
+}
+
+final class ComicListViewModel {
+    var comics = [ComicViewModel]()
+    var isShowingAlertGetComics = false
+    var isShowingAlertGetMoreComics = false
+    weak var delegate: ComicListViewModelDelegate?
     private var comicsRepository: ComicsRepository
     
     init(comicsRepository: ComicsRepository = ComicsRepository(networkService: NetworkService())) {
@@ -21,6 +25,7 @@ final class ComicListViewModel: ObservableObject {
     func getComics() async {
         do {
             try await self.comics = comicsRepository.fetchComics().data.results.compactMap(ComicViewModel.init)
+            delegate?.didFetchComics(self.comics)
         } catch {
             isShowingAlertGetComics = true
         }
