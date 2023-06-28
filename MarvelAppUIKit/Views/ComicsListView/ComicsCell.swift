@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ComicsCell: UITableViewCell {
     let comicViewModel: ComicViewModel? = nil
@@ -15,7 +16,6 @@ class ComicsCell: UITableViewCell {
     let comicImage = UIImageView()
     let stackView = UIStackView()
     let chevronImageView = UIImageView()
-    private var imageLoadVM = ImageLoadViewModel()
     static let reuseID = "ComicsCell"
     static let rowHeight: CGFloat = 200
     
@@ -36,22 +36,34 @@ extension ComicsCell {
         comicTitle.translatesAutoresizingMaskIntoConstraints = false
         comicTitle.font = UIFont.preferredFont(forTextStyle: .title3)
         comicTitle.font = UIFont.boldSystemFont(ofSize: comicTitle.font.pointSize)
+        comicTitle.lineBreakMode = .byWordWrapping
+        comicTitle.numberOfLines = 0
 
 //        comicTitle.adjustsFontSizeToFitWidth = true
         comicTitle.text = "Comics title"
         
         comicWritters.translatesAutoresizingMaskIntoConstraints = false
-        comicWritters.font = UIFont.preferredFont(forTextStyle: .body)
+        comicWritters.font = UIFont.preferredFont(forTextStyle: .caption1)
 //        comicWritters.adjustsFontSizeToFitWidth = true
         comicWritters.text = "Comics writters"
+        comicWritters.lineBreakMode = .byWordWrapping
+        comicWritters.numberOfLines = 3
         
         comicDescription.translatesAutoresizingMaskIntoConstraints = false
-        comicDescription.font = UIFont.preferredFont(forTextStyle: .body)
+        comicDescription.font = UIFont.preferredFont(forTextStyle: .caption1)
 //        comicDescription.adjustsFontSizeToFitWidth = true
         comicDescription.text = "Comics description"
+//        comicDescription.isScrollEnabled = false
+//        comicDescription.isEditable = false
+        comicDescription.lineBreakMode = .byWordWrapping
+        comicDescription.numberOfLines = 3
+        
         
         comicImage.translatesAutoresizingMaskIntoConstraints = false
+        comicImage.clipsToBounds = true
+        comicImage.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
         comicImage.contentMode = .scaleAspectFit
+        
         
         chevronImageView.translatesAutoresizingMaskIntoConstraints = false
         let chevronImage = UIImage(systemName: "chevron.right")
@@ -89,13 +101,6 @@ extension ComicsCell {
         comicTitle.text = comicVM.title
         comicWritters.text = comicVM.creators
         comicDescription.text = comicVM.description
-        Task {
-            imageLoadVM.urlString = "\(comicVM.thumbnailPath).jpg"
-            imageLoadVM.imageKey = comicVM.title
-            await imageLoadVM.downloadCoverImage()
-        }
-        if let fetchedImage = imageLoadVM.image {
-            imageView?.image = fetchedImage
-        }
+//        comicImage.kf.setImage(with: URL(string: "\(comicVM.thumbnailPath).jpg"))
     }
 }
