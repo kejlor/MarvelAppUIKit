@@ -26,8 +26,6 @@
 		5C866EA12A4AF81F00F3305C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C866EA02A4AF81F00F3305C /* AppDelegate.swift */; };
 		5C866EAA2A4AF82200F3305C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C866EA92A4AF82200F3305C /* Assets.xcassets */; };
 		5C866EAD2A4AF82200F3305C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C866EAB2A4AF82200F3305C /* LaunchScreen.storyboard */; };
-		5C866EB52A4AFBB700F3305C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C866EB42A4AFBB700F3305C /* HomeViewController.swift */; };
-		5C866EB72A4AFBF500F3305C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C866EB62A4AFBF500F3305C /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,8 +49,6 @@
 		5C866EA92A4AF82200F3305C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C866EAC2A4AF82200F3305C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C866EAE2A4AF82200F3305C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5C866EB42A4AFBB700F3305C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		5C866EB62A4AFBF500F3305C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +119,6 @@
 			isa = PBXGroup;
 			children = (
 				5C15DCDD2A4B13B800D2B1BB /* ComicsListView */,
-				5C866EB92A4B000200F3305C /* HomeView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -188,15 +183,6 @@
 				5C15DCE62A4C19F600D2B1BB /* MainViewController.swift */,
 			);
 			path = MarvelAppUIKit;
-			sourceTree = "<group>";
-		};
-		5C866EB92A4B000200F3305C /* HomeView */ = {
-			isa = PBXGroup;
-			children = (
-				5C866EB42A4AFBB700F3305C /* HomeViewController.swift */,
-				5C866EB62A4AFBF500F3305C /* HomeView.swift */,
-			);
-			path = HomeView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,11 +265,9 @@
 			files = (
 				5C15DCDF2A4B148C00D2B1BB /* ComicsListViewController.swift in Sources */,
 				5C15DCCB2A4B073300D2B1BB /* NetworkService.swift in Sources */,
-				5C866EB72A4AFBF500F3305C /* HomeView.swift in Sources */,
 				5C15DCB92A4B049B00D2B1BB /* Comic.swift in Sources */,
 				5C15DCDC2A4B09C000D2B1BB /* String+Ext.swift in Sources */,
 				5C15DCBD2A4B050F00D2B1BB /* Thumbnail.swift in Sources */,
-				5C866EB52A4AFBB700F3305C /* HomeViewController.swift in Sources */,
 				5C15DCC82A4B066C00D2B1BB /* APIKeyable.swift in Sources */,
 				5C15DCE32A4C134600D2B1BB /* ComicsCell.swift in Sources */,
 				5C15DCCE2A4B077900D2B1BB /* ComicsRepository.swift in Sources */,
