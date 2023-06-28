@@ -17,3 +17,10 @@
 
 // DismissSheetButton
 "DismissButtonText" = "Dismiss";
+
+// ComicViewModel
+"ComicViewModelTitleNotFound" = "Title not found";
+"ComicViewModelEmptyDescription" = "Empty description";
+"ComicViewModelCreatorsEmpty" = "Creators not found";
+"ComicViewModelDetail" = "detail";
+"ComicViewModelMoreData" = "More data not found";
