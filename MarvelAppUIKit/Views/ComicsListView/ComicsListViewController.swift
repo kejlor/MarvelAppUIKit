@@ -9,7 +9,6 @@ import UIKit
 
 class ComicsListViewController: UIViewController {
     private var comicListVM: ComicListViewModel = ComicListViewModel()
-    var comics: [ComicViewModel] = []
     var tableView = UITableView()
     let headerTitle = UILabel()
     
