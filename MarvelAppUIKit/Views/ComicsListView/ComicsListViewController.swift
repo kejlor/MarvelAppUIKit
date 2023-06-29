@@ -9,9 +9,23 @@ import UIKit
 
 class ComicsListViewController: UIViewController {
     private var comicListVM: ComicListViewModel = ComicListViewModel()
-    weak var coordinator: MainCoordinator?
-    var tableView = UITableView()
-    let headerTitle = UILabel()
+    lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(ComicsCell.self, forCellReuseIdentifier: ComicsCell.reuseID)
+        tableView.rowHeight = ComicsCell.rowHeight
+        tableView.tableFooterView = UIView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
+    lazy var headerTitle: UILabel = {
+        let label = UILabel()
+        label.text = "ComicsListViewController".localized
+        label.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,15 +41,7 @@ extension ComicsListViewController {
         getComics()
     }
     
-    private func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        tableView.register(ComicsCell.self, forCellReuseIdentifier: ComicsCell.reuseID)
-        tableView.rowHeight = ComicsCell.rowHeight
-        tableView.tableFooterView = UIView()
-        
-        tableView.translatesAutoresizingMaskIntoConstraints = false
+    private func setupTableView() {        
         view.addSubview(tableView)
         
         NSLayoutConstraint.activate([
@@ -47,9 +53,6 @@ extension ComicsListViewController {
     }
     
     private func setupTableHeaderView() {
-        headerTitle.text = "ComicsListViewController".localized
-        headerTitle.font = UIFont.preferredFont(forTextStyle: .largeTitle)
-        headerTitle.translatesAutoresizingMaskIntoConstraints = false
         tableView.tableHeaderView = headerTitle
         headerTitle.leadingAnchor.constraint(equalToSystemSpacingAfter: self.tableView.leadingAnchor, multiplier: ComicsListViewControllerParameters.headerTitleMultiplier).isActive = true
     }
