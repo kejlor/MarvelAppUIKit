@@ -14,6 +14,7 @@ class ComicsCell: UITableViewCell {
     let comicWritters = UILabel()
     let comicDescription = UILabel()
     let comicImage = UIImageView()
+    let horizontalStackView = UIStackView()
     let stackView = UIStackView()
     let chevronImageView = UIImageView()
     static let reuseID = "ComicsCell"
@@ -51,19 +52,15 @@ extension ComicsCell {
         
         comicDescription.translatesAutoresizingMaskIntoConstraints = false
         comicDescription.font = UIFont.preferredFont(forTextStyle: .caption1)
-//        comicDescription.adjustsFontSizeToFitWidth = true
         comicDescription.text = "Comics description"
-//        comicDescription.isScrollEnabled = false
-//        comicDescription.isEditable = false
-        comicDescription.lineBreakMode = .byWordWrapping
         comicDescription.numberOfLines = 3
+        comicDescription.lineBreakMode = .byTruncatingTail
         
         
         comicImage.translatesAutoresizingMaskIntoConstraints = false
+        comicImage.contentMode = .scaleToFill
+//        comicImage.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
         comicImage.clipsToBounds = true
-        comicImage.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
-        comicImage.contentMode = .scaleAspectFit
-        
         
         chevronImageView.translatesAutoresizingMaskIntoConstraints = false
         let chevronImage = UIImage(systemName: "chevron.right")
@@ -71,27 +68,34 @@ extension ComicsCell {
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = 20
+        stackView.spacing = 10
         
+        horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
+        horizontalStackView.axis = .horizontal
+        horizontalStackView.spacing = 10
     }
     
     private func layout() {
+        horizontalStackView.addArrangedSubview(comicImage)
         stackView.addArrangedSubview(comicTitle)
         stackView.addArrangedSubview(comicWritters)
         stackView.addArrangedSubview(comicDescription)
+        horizontalStackView.addArrangedSubview(stackView)
         
-        contentView.addSubview(comicImage)
-        contentView.addSubview(stackView)
+        contentView.addSubview(horizontalStackView)
         contentView.addSubview(chevronImageView)
         
+        // priorities
         NSLayoutConstraint.activate([
-            comicImage.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 2),
-            comicImage.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 2),
-            stackView.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 2),
-            stackView.leadingAnchor.constraint(equalToSystemSpacingAfter: comicImage.trailingAnchor, multiplier: 2),
-            trailingAnchor.constraint(equalToSystemSpacingAfter: stackView.trailingAnchor, multiplier: 3),
-            chevronImageView.topAnchor.constraint(equalToSystemSpacingBelow: centerYAnchor, multiplier: 1),
-            trailingAnchor.constraint(equalToSystemSpacingAfter: chevronImageView.trailingAnchor, multiplier: 1)
+            horizontalStackView.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 2),
+            horizontalStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 2),
+            bottomAnchor.constraint(equalToSystemSpacingBelow: horizontalStackView.bottomAnchor, multiplier: 2),
+            trailingAnchor.constraint(equalToSystemSpacingAfter: horizontalStackView.trailingAnchor, multiplier: 2),
+//            stackView.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 2),
+//            stackView.leadingAnchor.constraint(equalToSystemSpacingAfter: comicImage.trailingAnchor, multiplier: 2),
+//            trailingAnchor.constraint(equalToSystemSpacingAfter: stackView.trailingAnchor, multiplier: 3),
+            chevronImageView.topAnchor.constraint(equalToSystemSpacingBelow: centerYAnchor, multiplier: 2),
+            trailingAnchor.constraint(equalToSystemSpacingAfter: chevronImageView.trailingAnchor, multiplier: 2)
         ])
     }
 }
@@ -101,6 +105,16 @@ extension ComicsCell {
         comicTitle.text = comicVM.title
         comicWritters.text = comicVM.creators
         comicDescription.text = comicVM.description
-//        comicImage.kf.setImage(with: URL(string: "\(comicVM.thumbnailPath).jpg"))
+        comicImage.kf.setImage(with: URL(string: "\(comicVM.thumbnailPath).jpg"))
     }
+}
+
+enum ComicsCellParameters {
+    static let rowHeight: CGFloat = 200
+    static let comicTitleLines: CGFloat = 0
+    static let comicWritersLines: CGFloat = 3
+    static let comicDescriptionLines: CGFloat = 3
+    static let verticalStackSpacing: CGFloat = 10
+    static let horizontalStackSpacing: CGFloat = 10
+    static let layoutMultiplier: CGFloat = 2
 }
