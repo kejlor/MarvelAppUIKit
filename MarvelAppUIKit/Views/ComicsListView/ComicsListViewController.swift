@@ -47,11 +47,11 @@ extension ComicsListViewController {
     }
     
     private func setupTableHeaderView() {
-        headerTitle.text = "Marvel"
+        headerTitle.text = "ComicsListViewController".localized
         headerTitle.font = UIFont.preferredFont(forTextStyle: .largeTitle)
         headerTitle.translatesAutoresizingMaskIntoConstraints = false
-        //        headerTitle.leadingAnchor.constraint(equalToSystemSpacingAfter: self.tableView.leadingAnchor, multiplier: 3).isActive = true
         tableView.tableHeaderView = headerTitle
+        headerTitle.leadingAnchor.constraint(equalToSystemSpacingAfter: self.tableView.leadingAnchor, multiplier: ComicsListViewControllerParameters.headerTitleMultiplier).isActive = true
     }
 }
 
@@ -79,7 +79,7 @@ extension ComicsListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let lastIndex = self.comicListVM.comics.count - 1
+        let lastIndex = self.comicListVM.comics.count - ComicsListViewControllerParameters.amountToSubtractFromArray
         if indexPath.row == lastIndex {
             self.getMoreComics()
         }
@@ -112,4 +112,9 @@ extension ComicsListViewController: ComicListViewModelDelegate {
             self.tableView.reloadData()
         }
     }
+}
+
+enum ComicsListViewControllerParameters {
+    static let amountToSubtractFromArray: Int = 1
+    static let headerTitleMultiplier: CGFloat = 3
 }
