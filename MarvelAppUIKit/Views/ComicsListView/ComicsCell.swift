@@ -98,7 +98,7 @@ extension ComicsCell {
 extension ComicsCell {
     func configure(with comicVM: ComicViewModel) {
         comicTitle.text = comicVM.title
-        comicWritters.text = comicVM.creators
+        comicWritters.text = "WrittenByText".localized + comicVM.creators
         comicDescription.text = comicVM.description
         comicImage.kf.setImage(with: URL(string: "\(comicVM.thumbnailPath).jpg"))
     }

@@ -10,7 +10,7 @@
 "DetailText" = "szczegóły";
 
 // ComicListEntry
-"WrittenByText" = "napisane przez";
+"WrittenByText" = "napisane przez ";
 
 // FindOutButton
 "FindOutButtonText" = "Dowiedz się więcej";
