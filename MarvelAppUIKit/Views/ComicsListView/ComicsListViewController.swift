@@ -12,7 +12,7 @@ class ComicsListViewController: UIViewController {
     var comics: [ComicViewModel] = []
     var tableView = UITableView()
     let headerTitle = UILabel()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -26,7 +26,7 @@ extension ComicsListViewController {
         setupTableHeaderView()
         getComics()
     }
-
+    
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -34,51 +34,55 @@ extension ComicsListViewController {
         tableView.register(ComicsCell.self, forCellReuseIdentifier: ComicsCell.reuseID)
         tableView.rowHeight = ComicsCell.rowHeight
         tableView.tableFooterView = UIView()
-
+        
         tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
-
+        
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
     
     private func setupTableHeaderView() {
         headerTitle.text = "Marvel"
         headerTitle.font = UIFont.preferredFont(forTextStyle: .largeTitle)
-        
-        var size = headerTitle.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
-        size.width = UIScreen.main.bounds.width
-        headerTitle.frame.size = size
-        
+        headerTitle.translatesAutoresizingMaskIntoConstraints = false
+        //        headerTitle.leadingAnchor.constraint(equalToSystemSpacingAfter: self.tableView.leadingAnchor, multiplier: 3).isActive = true
         tableView.tableHeaderView = headerTitle
     }
 }
 
 extension ComicsListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard !comics.isEmpty else { return UITableViewCell() }
+        guard !comicListVM.comics.isEmpty else { return UITableViewCell() }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: ComicsCell.reuseID, for: indexPath) as! ComicsCell
-        let comicVM = comics[indexPath.row]
+        let comicVM = comicListVM.comics[indexPath.row]
         cell.configure(with: comicVM)
         
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return comics.count
+        return comicListVM.comics.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastIndex = self.comicListVM.comics.count - 1
+        if indexPath.row == lastIndex {
+            self.getMoreComics()
+        }
     }
 }
 
@@ -88,11 +92,22 @@ extension ComicsListViewController {
             await comicListVM.getComics()
         }
     }
+    
+    private func getMoreComics() {
+        Task {
+            await comicListVM.getMoreComics()
+        }
+    }
 }
 
 extension ComicsListViewController: ComicListViewModelDelegate {
+    func didFetchMoreComics(_ comics: [ComicViewModel]) {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
     func didFetchComics(_ comics: [ComicViewModel]) {
-        self.comics = comics
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }

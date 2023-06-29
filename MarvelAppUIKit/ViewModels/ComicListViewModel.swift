@@ -9,6 +9,7 @@ import Foundation
 
 protocol ComicListViewModelDelegate: AnyObject {
     func didFetchComics(_ comics: [ComicViewModel])
+    func didFetchMoreComics(_ comics: [ComicViewModel])
 }
 
 final class ComicListViewModel {
@@ -34,6 +35,8 @@ final class ComicListViewModel {
     func getMoreComics() async {
         do {
             self.comics.append(contentsOf: try await comicsRepository.fetchMoreComics().data.results.compactMap(ComicViewModel.init))
+            delegate?.didFetchComics(self.comics)
+            print(comics)
         } catch {
             isShowingAlertGetMoreComics = true
         }
