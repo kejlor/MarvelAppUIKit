@@ -24,3 +24,11 @@
 "ComicViewModelCreatorsEmpty" = "Creators not found";
 "ComicViewModelDetail" = "detail";
 "ComicViewModelMoreData" = "More data not found";
+
+// ComicsListViewController
+"ComicsListViewController" = "Marvel Comics";
+
+// ComicsCell
+"ComicsCellComicTitle" = "Comics title";
+"ComicsCellComicWritters" = "Comics writters";
+"ComicsCellComicDescription" = "Comics description";
