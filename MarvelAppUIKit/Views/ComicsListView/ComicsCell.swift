@@ -10,19 +10,69 @@ import Kingfisher
 
 class ComicsCell: UITableViewCell {
     let comicViewModel: ComicViewModel? = nil
-    let comicTitle = UILabel()
-    let comicWritters = UILabel()
-    let comicDescription = UILabel()
-    let comicImage = UIImageView()
-    let horizontalStackView = UIStackView()
-    let stackView = UIStackView()
-    let chevronImageView = UIImageView()
+    let comicTitle: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.preferredFont(forTextStyle: .title3)
+        label.font = UIFont.boldSystemFont(ofSize: label.font.pointSize)
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = ComicsCellParameters.comicTitleLines
+        label.text = "ComicsCellComicTitle".localized
+        return label
+    }()
+    let comicWritters: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.preferredFont(forTextStyle: .caption1)
+        label.text = "ComicsCellComicWritters".localized
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = ComicsCellParameters.comicWrittersLines
+        return label
+    }()
+    let comicDescription: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.preferredFont(forTextStyle: .caption1)
+        label.text = "ComicsCellComicDescription".localized
+        label.numberOfLines = ComicsCellParameters.comicDescriptionLines
+        label.lineBreakMode = .byTruncatingTail
+        return label
+    }()
+    lazy var comicImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleToFill
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+    lazy var horizontalStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.spacing = ComicsCellParameters.horizontalStackSpacing
+        stackView.distribution = .fillProportionally
+        stackView.alignment = .leading
+        return stackView
+    }()
+    lazy var verticalStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = ComicsCellParameters.verticalStackSpacing
+        return stackView
+    }()
+    lazy var chevronImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        let chevronImage = UIImage(systemName: "chevron.right")
+        imageView.image = chevronImage
+        return imageView
+    }()
     static let reuseID = "ComicsCell"
     static let rowHeight: CGFloat = ComicsCellParameters.rowHeight
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setup()
         layout()
     }
     
@@ -33,52 +83,12 @@ class ComicsCell: UITableViewCell {
 }
 
 extension ComicsCell {
-    private func setup() {
-        comicTitle.translatesAutoresizingMaskIntoConstraints = false
-        comicTitle.font = UIFont.preferredFont(forTextStyle: .title3)
-        comicTitle.font = UIFont.boldSystemFont(ofSize: comicTitle.font.pointSize)
-        comicTitle.lineBreakMode = .byWordWrapping
-        comicTitle.numberOfLines = ComicsCellParameters.comicTitleLines
-        comicTitle.text = "ComicsCellComicTitle".localized
-        
-        comicWritters.translatesAutoresizingMaskIntoConstraints = false
-        comicWritters.font = UIFont.preferredFont(forTextStyle: .caption1)
-        comicWritters.text = "ComicsCellComicWritters".localized
-        comicWritters.lineBreakMode = .byWordWrapping
-        comicWritters.numberOfLines = ComicsCellParameters.comicWrittersLines
-        
-        comicDescription.translatesAutoresizingMaskIntoConstraints = false
-        comicDescription.font = UIFont.preferredFont(forTextStyle: .caption1)
-        comicDescription.text = "ComicsCellComicDescription".localized
-        comicDescription.numberOfLines = ComicsCellParameters.comicDescriptionLines
-        comicDescription.lineBreakMode = .byTruncatingTail
-        
-        
-        comicImage.translatesAutoresizingMaskIntoConstraints = false
-        comicImage.contentMode = .scaleToFill
-        comicImage.clipsToBounds = true
-        
-        chevronImageView.translatesAutoresizingMaskIntoConstraints = false
-        let chevronImage = UIImage(systemName: "chevron.right")
-        chevronImageView.image = chevronImage
-        
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.spacing = ComicsCellParameters.verticalStackSpacing
-        
-        horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
-        horizontalStackView.axis = .horizontal
-        horizontalStackView.spacing = ComicsCellParameters.horizontalStackSpacing
-        horizontalStackView.distribution = .fillProportionally
-        horizontalStackView.alignment = .leading
-    }
-    
     private func layout() {
         horizontalStackView.addArrangedSubview(comicImage)
-        stackView.addArrangedSubview(comicTitle)
-        stackView.addArrangedSubview(comicWritters)
-        stackView.addArrangedSubview(comicDescription)
-        horizontalStackView.addArrangedSubview(stackView)
+        verticalStackView.addArrangedSubview(comicTitle)
+        verticalStackView.addArrangedSubview(comicWritters)
+        verticalStackView.addArrangedSubview(comicDescription)
+        horizontalStackView.addArrangedSubview(verticalStackView)
         
         contentView.addSubview(horizontalStackView)
         contentView.addSubview(chevronImageView)
