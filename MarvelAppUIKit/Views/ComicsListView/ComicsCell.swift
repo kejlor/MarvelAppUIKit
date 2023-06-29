@@ -10,7 +10,7 @@ import Kingfisher
 
 class ComicsCell: UITableViewCell {
     let comicViewModel: ComicViewModel? = nil
-    let comicTitle: UILabel = {
+    lazy var comicTitle: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.preferredFont(forTextStyle: .title3)
@@ -20,7 +20,7 @@ class ComicsCell: UITableViewCell {
         label.text = "ComicsCellComicTitle".localized
         return label
     }()
-    let comicWritters: UILabel = {
+    lazy var comicWritters: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.preferredFont(forTextStyle: .caption1)
@@ -29,7 +29,7 @@ class ComicsCell: UITableViewCell {
         label.numberOfLines = ComicsCellParameters.comicWrittersLines
         return label
     }()
-    let comicDescription: UILabel = {
+    lazy var comicDescription: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.preferredFont(forTextStyle: .caption1)
