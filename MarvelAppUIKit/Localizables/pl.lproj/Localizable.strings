@@ -1,0 +1,34 @@
+/* 
+  Localizable.strings
+  MarvelAppUIKit
+
+  Created by Bartosz Wojtkowiak on 27/06/2023.
+  
+*/
+
+// ComicListViewModel
+"DetailText" = "szczegóły";
+
+// ComicListEntry
+"WrittenByText" = "napisane przez %@";
+
+// FindOutButton
+"FindOutButtonText" = "Dowiedz się więcej";
+
+// DismissSheetButton
+"DismissButtonText" = "Zamknij";
+
+// ComicViewModel
+"ComicViewModelTitleNotFound" = "Nie znaleziono tytułu";
+"ComicViewModelEmptyDescription" = "Nie znaleziono opisu";
+"ComicViewModelCreatorsEmpty" = "Nie znaleziono twórców";
+"ComicViewModelDetail" = "szczegóły";
+"ComicViewModelMoreData" = "Nie znaleziono więcej informacji";
+
+// ComicsListViewController
+"ComicsListViewController" = "Komiksy Marvel'a";
+
+// ComicsCell
+"ComicsCellComicTitle" = "Tytuł komiksu";
+"ComicsCellComicWritters" = "Autorzy komiksu";
+"ComicsCellComicDescription" = "Opis komiksu";
