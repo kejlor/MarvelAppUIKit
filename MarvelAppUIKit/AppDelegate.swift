@@ -10,20 +10,19 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    
-    let mainViewController = MainViewController()
+    let navController = UINavigationController()
+    let tabBarController = UITabBarController()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        let coordinator = MainCoordinator(navigationController: navController, tabBarController: tabBarController)
+        
+        coordinator.start()
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.backgroundColor = .systemBackground
-        window?.rootViewController = mainViewController
+        window?.rootViewController = navController
         
         return true
-    }
-    
-    private func prepMainView() {
-            
     }
 }

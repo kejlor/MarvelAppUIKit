@@ -9,6 +9,7 @@ import UIKit
 
 class ComicsListViewController: UIViewController {
     private var comicListVM: ComicListViewModel = ComicListViewModel()
+    weak var coordinator: MainCoordinator?
     var tableView = UITableView()
     let headerTitle = UILabel()
     
