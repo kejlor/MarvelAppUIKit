@@ -89,7 +89,7 @@ extension ComicsCell {
             horizontalStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: ComicsCellParameters.layoutMultiplier),
             bottomAnchor.constraint(equalToSystemSpacingBelow: horizontalStackView.bottomAnchor, multiplier: ComicsCellParameters.layoutMultiplier),
             trailingAnchor.constraint(equalToSystemSpacingAfter: horizontalStackView.trailingAnchor, multiplier: ComicsCellParameters.layoutMultiplier),
-            chevronImageView.topAnchor.constraint(equalToSystemSpacingBelow: centerYAnchor, multiplier: ComicsCellParameters.layoutMultiplier),
+            chevronImageView.topAnchor.constraint(equalTo: centerYAnchor),
             trailingAnchor.constraint(equalToSystemSpacingAfter: chevronImageView.trailingAnchor, multiplier: ComicsCellParameters.layoutMultiplier)
         ])
     }
