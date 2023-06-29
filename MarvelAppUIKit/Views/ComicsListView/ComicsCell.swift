@@ -57,7 +57,6 @@ extension ComicsCell {
         comicImage.translatesAutoresizingMaskIntoConstraints = false
         comicImage.contentMode = .scaleToFill
         comicImage.clipsToBounds = true
-        comicImage.widthAnchor.constraint(equalToConstant: ComicsCellParameters.comicImageWidth).isActive = true
         
         chevronImageView.translatesAutoresizingMaskIntoConstraints = false
         let chevronImage = UIImage(systemName: "chevron.right")
@@ -90,7 +89,8 @@ extension ComicsCell {
             bottomAnchor.constraint(equalToSystemSpacingBelow: horizontalStackView.bottomAnchor, multiplier: ComicsCellParameters.layoutMultiplier),
             trailingAnchor.constraint(equalToSystemSpacingAfter: horizontalStackView.trailingAnchor, multiplier: ComicsCellParameters.layoutMultiplier),
             chevronImageView.topAnchor.constraint(equalTo: centerYAnchor),
-            trailingAnchor.constraint(equalToSystemSpacingAfter: chevronImageView.trailingAnchor, multiplier: ComicsCellParameters.layoutMultiplier)
+            trailingAnchor.constraint(equalToSystemSpacingAfter: chevronImageView.trailingAnchor, multiplier: ComicsCellParameters.layoutMultiplier),
+            comicImage.widthAnchor.constraint(equalToConstant: ComicsCellParameters.comicImageWidth)
         ])
     }
 }
@@ -98,7 +98,7 @@ extension ComicsCell {
 extension ComicsCell {
     func configure(with comicVM: ComicViewModel) {
         comicTitle.text = comicVM.title
-        comicWritters.text = "WrittenByText".localized + comicVM.creators
+        comicWritters.text = "WrittenByText".localized(comicVM.creators)
         comicDescription.text = comicVM.description
         comicImage.kf.setImage(with: URL(string: "\(comicVM.thumbnailPath).jpg"))
     }
