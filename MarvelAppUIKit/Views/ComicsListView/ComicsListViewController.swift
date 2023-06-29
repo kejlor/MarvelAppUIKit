@@ -9,7 +9,7 @@ import UIKit
 
 class ComicsListViewController: UIViewController {
     private var comicListVM: ComicListViewModel = ComicListViewModel()
-    lazy var tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
@@ -19,7 +19,7 @@ class ComicsListViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
-    lazy var headerTitle: UILabel = {
+    private lazy var headerTitle: UILabel = {
         let label = UILabel()
         label.text = "ComicsListViewController".localized
         label.font = UIFont.preferredFont(forTextStyle: .largeTitle)
