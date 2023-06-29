@@ -10,7 +10,7 @@ import Kingfisher
 
 class ComicsCell: UITableViewCell {
     let comicViewModel: ComicViewModel? = nil
-    lazy var comicTitle: UILabel = {
+    private lazy var comicTitle: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.preferredFont(forTextStyle: .title3)
@@ -20,7 +20,7 @@ class ComicsCell: UITableViewCell {
         label.text = "ComicsCellComicTitle".localized
         return label
     }()
-    lazy var comicWritters: UILabel = {
+    private lazy var comicWritters: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.preferredFont(forTextStyle: .caption1)
@@ -29,7 +29,7 @@ class ComicsCell: UITableViewCell {
         label.numberOfLines = ComicsCellParameters.comicWrittersLines
         return label
     }()
-    lazy var comicDescription: UILabel = {
+    private lazy var comicDescription: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.preferredFont(forTextStyle: .caption1)
@@ -38,14 +38,14 @@ class ComicsCell: UITableViewCell {
         label.lineBreakMode = .byTruncatingTail
         return label
     }()
-    lazy var comicImage: UIImageView = {
+    private lazy var comicImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
         return imageView
     }()
-    lazy var horizontalStackView: UIStackView = {
+    private lazy var horizontalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
@@ -54,14 +54,14 @@ class ComicsCell: UITableViewCell {
         stackView.alignment = .leading
         return stackView
     }()
-    lazy var verticalStackView: UIStackView = {
+    private lazy var verticalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = ComicsCellParameters.verticalStackSpacing
         return stackView
     }()
-    lazy var chevronImageView: UIImageView = {
+    private lazy var chevronImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         let chevronImage = UIImage(systemName: "chevron.right")
