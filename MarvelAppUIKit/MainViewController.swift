@@ -18,8 +18,6 @@ class MainViewController: UITabBarController {
     private func setupViews() {
         let comicsListVC = ComicsListViewController()
 
-//        comicsListVC.setTabBarImage(imageName: "list.dash.header.rectangle", title: "Summary")
-
         let summaryNC = UINavigationController(rootViewController: comicsListVC)
 
         hideNavigationBarLine(summaryNC.navigationBar)
