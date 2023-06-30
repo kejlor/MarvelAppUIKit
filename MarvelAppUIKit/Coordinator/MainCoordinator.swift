@@ -7,43 +7,37 @@
 
 import UIKit
 
-protocol Coordinator: AnyObject {
-    var childCoorditors: [Coordinator] { get set }
-    var navigationController: UINavigationController { get set }
-    var tabBarController: UITabBarController { get set}
-}
-
 class MainCoordinator: Coordinator {
-    var childCoorditors: [Coordinator] = []
+    var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
-    var tabBarController: UITabBarController
+    weak var parent: Coordinator?
+    private let comicsListVC = ComicsListViewController()
     
-    init(navigationController: UINavigationController, tabBarController: UITabBarController) {
+    init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.tabBarController = tabBarController
+    }
+    
+    func getComicsListVC() -> ComicsListViewController {
+        return comicsListVC
     }
     
     func start() {
-        let vc = ComicsListViewController()
-        vc.coordinator = self
-        vc.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
-        navigationController.pushViewController(vc, animated: false)
+        comicsListVC.coordinator = self
+        comicsListVC.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
+        navigationController.pushViewController(comicsListVC, animated: false)
     }
     
-    func pushToNavController(_ vc: UIViewController) {
-        navigationController.pushViewController(vc, animated: true)
-    }
-    
-    func searchList() {
-        let vc = SearchListViewController()
-        vc.coordinator = self
-        vc.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
-        pushToNavController(vc)
-    }
-    
-    func detailComics() {
+    func openDetailComicsView() {
         let vc = DetailComicsView()
         vc.coordinator = self
-        pushToNavController(vc)
+        //        push(vc)
+    }
+    
+    func childDidFinish(_ child: Coordinator) {
+        for (index, coordinator) in childCoordinators.enumerated() {
+            if coordinator === child {
+                childCoordinators.remove(at: index)
+            }
+        }
     }
 }
