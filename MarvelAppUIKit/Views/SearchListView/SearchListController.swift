@@ -8,7 +8,7 @@
 import UIKit
 
 class SearchListViewController: UIViewController {
-    weak var coordinator: MainCoordinator?
+    weak var coordinator: Coordinator?
     let stackView = UIStackView()
     let label = UILabel()
     
