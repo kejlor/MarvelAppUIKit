@@ -15,25 +15,18 @@ class SearchTextField: UIView {
     private lazy var magnifyingglassImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(systemName: "magnifyingglass")?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        imageView.image = UIImage(systemName: "magnifyingglass")?.withTintColor(.gray, renderingMode: .alwaysOriginal)
         return imageView
     }()
-    // private nie moze byc
-    lazy var textField: UITextField = {
+    public private (set) lazy var textField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.textColor = .white
+        textField.textColor = .black
         textField.placeholder = placeHolderText
         textField.delegate = self
         textField.keyboardType = .asciiCapable
-        textField.attributedPlaceholder = NSAttributedString(string:placeHolderText, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        textField.attributedPlaceholder = NSAttributedString(string:placeHolderText, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         return textField
-    }()
-    private lazy var dividerView: UIView = {
-        let divider = UIView()
-        dividerView.translatesAutoresizingMaskIntoConstraints = false
-        dividerView.backgroundColor = .white
-        return divider
     }()
     
     let placeHolderText: String
@@ -49,7 +42,7 @@ class SearchTextField: UIView {
         
         super.init(frame: .zero)
         
-//        style()
+        style()
         layout()
     }
     
@@ -63,43 +56,30 @@ class SearchTextField: UIView {
 }
 
 extension SearchTextField {
-//    func style() {
-//        translatesAutoresizingMaskIntoConstraints = false
-//    }
+    func style() {
+        translatesAutoresizingMaskIntoConstraints = false
+    }
     
     func layout() {
         addSubview(magnifyingglassImageView)
         addSubview(textField)
-        addSubview(dividerView)
         
-        // magnifyingglassImageView
         NSLayoutConstraint.activate([
             magnifyingglassImageView.centerYAnchor.constraint(equalTo: textField.centerYAnchor),
-            magnifyingglassImageView.leadingAnchor.constraint(equalTo: leadingAnchor)
+            magnifyingglassImageView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 2)
         ])
         
-        // textField
         NSLayoutConstraint.activate([
             textField.topAnchor.constraint(equalTo: topAnchor),
             textField.leadingAnchor.constraint(equalToSystemSpacingAfter: magnifyingglassImageView.trailingAnchor, multiplier: 1),
             textField.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
         
-        // divider
-        NSLayoutConstraint.activate([
-            dividerView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            dividerView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            dividerView.heightAnchor.constraint(equalToConstant: 1),
-            dividerView.topAnchor.constraint(equalToSystemSpacingBelow: textField.bottomAnchor, multiplier: 1)
-        ])
-        
-        // CHCR
         magnifyingglassImageView.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
         textField.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .horizontal)
     }
 }
 
-// MARK: - UITextFieldDelegate
 extension SearchTextField: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         delegate?.editingDidEnd(self)
