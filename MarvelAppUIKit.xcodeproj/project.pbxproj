@@ -36,6 +36,8 @@
 		5CEA6D882A4EC0E600C8588D /* SearchComicsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA6D872A4EC0E600C8588D /* SearchComicsListViewModel.swift */; };
 		5CEA6D8B2A4EC43600C8588D /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA6D8A2A4EC43600C8588D /* SearchTextField.swift */; };
 		5CEA6D8D2A4EC9B100C8588D /* UIResponder+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA6D8C2A4EC9B100C8588D /* UIResponder+Utils.swift */; };
+		5CFEEDB52A52CBDC0002D1DB /* SearchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFEEDB42A52CBDC0002D1DB /* SearchListView.swift */; };
+		5CFEEDB82A52D0C80002D1DB /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFEEDB72A52D0C80002D1DB /* UIView+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +72,8 @@
 		5CEA6D872A4EC0E600C8588D /* SearchComicsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchComicsListViewModel.swift; sourceTree = "<group>"; };
 		5CEA6D8A2A4EC43600C8588D /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		5CEA6D8C2A4EC9B100C8588D /* UIResponder+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Utils.swift"; sourceTree = "<group>"; };
+		5CFEEDB42A52CBDC0002D1DB /* SearchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListView.swift; sourceTree = "<group>"; };
+		5CFEEDB72A52D0C80002D1DB /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +164,7 @@
 			children = (
 				5C15DCDB2A4B09C000D2B1BB /* String+Ext.swift */,
 				5CEA6D8C2A4EC9B100C8588D /* UIResponder+Utils.swift */,
+				5CFEEDB72A52D0C80002D1DB /* UIView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -188,6 +193,7 @@
 			children = (
 				5C15DCF22A4D977E00D2B1BB /* SearchListController.swift */,
 				5CEA6D7C2A4DAE2900C8588D /* EmptySearchListView.swift */,
+				5CFEEDB42A52CBDC0002D1DB /* SearchListView.swift */,
 			);
 			path = SearchListView;
 			sourceTree = "<group>";
@@ -357,8 +363,10 @@
 				5C15DCC12A4B052B00D2B1BB /* UrlResponse.swift in Sources */,
 				5C15DCF32A4D977E00D2B1BB /* SearchListController.swift in Sources */,
 				5C15DCD22A4B090500D2B1BB /* ComicListViewModel.swift in Sources */,
+				5CFEEDB82A52D0C80002D1DB /* UIView+Ext.swift in Sources */,
 				5C15DCF02A4D8F6A00D2B1BB /* MainCoordinator.swift in Sources */,
 				5C866EA12A4AF81F00F3305C /* AppDelegate.swift in Sources */,
+				5CFEEDB52A52CBDC0002D1DB /* SearchListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
