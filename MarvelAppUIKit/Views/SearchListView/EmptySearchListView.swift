@@ -21,8 +21,8 @@ class EmptySearchListView: UIView {
         label.font = UIFont.preferredFont(forTextStyle: .title3)
         label.font = UIFont.boldSystemFont(ofSize: label.font.pointSize)
         label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 0
-        label.text = "Start typing to find particular comics."
+        label.numberOfLines = .zero
+        label.text = "EmptySearchListViewLabelMessage".localized
         label.backgroundColor = .blue
         return label
     }()
@@ -38,7 +38,7 @@ class EmptySearchListView: UIView {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = 10
+        stackView.spacing = EmptySearchListViewParameters.verticalStackSpacing
         stackView.distribution = .equalCentering
         stackView.alignment = .center
         return stackView
@@ -60,9 +60,9 @@ extension EmptySearchListView {
     func checkMessageStatus() {
         switch listStatus {
         case .emptyList:
-            messageLabel.text = "Comics not found. Try providing a correct title."
+            messageLabel.text = "EmptySearchListViewComicsNotFound".localized
         case .startTyping:
-            messageLabel.text = "Start typing to find particular comics."
+            messageLabel.text = "EmptySearchListViewLabelMessage".localized
         }
     }
     
@@ -85,9 +85,16 @@ extension EmptySearchListView {
             verticalStackView.topAnchor.constraint(equalTo: topAnchor),
             verticalStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
             verticalStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            messageIcon.widthAnchor.constraint(equalToConstant: 100),
-            messageIcon.heightAnchor.constraint(equalToConstant: 100),
-            messageLabel.heightAnchor.constraint(equalToConstant: 50)
+            messageIcon.widthAnchor.constraint(equalToConstant: EmptySearchListViewParameters.iconWidth),
+            messageIcon.heightAnchor.constraint(equalToConstant: EmptySearchListViewParameters.iconHeight),
+            messageLabel.heightAnchor.constraint(equalToConstant: EmptySearchListViewParameters.labelHeight)
         ])
     }
+}
+
+enum EmptySearchListViewParameters {
+    static let verticalStackSpacing: CGFloat = 10
+    static let iconWidth: CGFloat = 100
+    static let iconHeight: CGFloat = 100
+    static let labelHeight: CGFloat = 50
 }

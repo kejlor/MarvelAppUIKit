@@ -22,7 +22,7 @@ class SearchListViewController: UIViewController {
         return tableView
     }()
     private lazy var searchTextField: SearchTextField = {
-        let textField = SearchTextField(placeHolderText: "Search comics by title")
+        let textField = SearchTextField(placeHolderText: "SearchListViewControllerSearchTextFieldPlaceholder".localized)
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.delegate = self
         textField.backgroundColor = .magenta
@@ -57,6 +57,8 @@ extension SearchListViewController {
 //                verticalStackView.addArrangedSubview(searchTextField)
 //                verticalStackView.addArrangedSubview(tableView)
 //                verticalStackView.addArrangedSubview(emptySearchView)
+//        view.addSubview(verticalStackView)
+        
         view.addSubview(searchTextField)
         view.addSubview(tableView)
         view.addSubview(emptySearchView)
@@ -130,9 +132,9 @@ extension SearchListViewController: SearchComicsListViewModelDelegate {
     func didFetchComics(_ comics: [ComicViewModel]) {
         DispatchQueue.main.async {
             self.tableView.reloadData()
-            let estimatedHeight = self.tableView.numberOfRows(inSection: 0)
-            let width = self.verticalStackView.frame.size.width
-                        self.tableView.frame = CGRect(x: 0, y: 0, width: Int(width), height: estimatedHeight)
+            let estimatedHeight = self.tableView.numberOfRows(inSection: SearchListViewControllerParameters.tableNumberOfRowsInSection)
+            let width = self.view.frame.size.width
+            self.tableView.frame = CGRect(x: SearchListViewControllerParameters.tableViewFrameX, y: SearchListViewControllerParameters.tableViewFrameY, width: Int(width), height: estimatedHeight)
                         self.displayCorrectView()
         }
     }
@@ -156,16 +158,20 @@ extension SearchListViewController {
         
         if textFieldBottomY > keyboardTopY {
             let textBoxY = convertedTextFieldFrame.origin.y
-            let newFrameY = (textBoxY - keyboardTopY / 2) * -1
+            let newFrameY = (textBoxY - keyboardTopY / SearchListViewControllerParameters.keyboardYDivider) * SearchListViewControllerParameters.keyboardYMultiplier
             view.frame.origin.y = newFrameY
         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        view.frame.origin.y = 0
+        view.frame.origin.y = .zero
     }
 }
 
 enum SearchListViewControllerParameters {
-    
+    static let tableViewFrameX: Int = 0
+    static let tableViewFrameY: Int = 0
+    static let tableNumberOfRowsInSection: Int = 0
+    static let keyboardYDivider: CGFloat = 2
+    static let keyboardYMultiplier: CGFloat = -1
 }
