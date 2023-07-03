@@ -37,9 +37,9 @@ class TabbarCoordinator: Coordinator {
         let main = mainCoordinator.getComicsListVC()
         
             // dodac searchCoordin
-        let searchCoordinator = MainCoordinator(navigationController: navigationController)
+        let searchCoordinator = SearchCoordinator(navigationController: navigationController)
         searchCoordinator.parent = self
-        let search = searchCoordinator.getComicsListVC()
+        let search = searchCoordinator.getSearchListVC()
         
         tabViewController.addViewControllers([main, search])
     }
