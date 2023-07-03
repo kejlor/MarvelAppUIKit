@@ -10,76 +10,45 @@ import UIKit
 class SearchListViewController: UIViewController {
     private var searchListComicsVM: SearchComicsListViewModel = SearchComicsListViewModel()
     weak var coordinator: Coordinator?
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(ComicsCell.self, forCellReuseIdentifier: ComicsCell.reuseID)
-        tableView.rowHeight = ComicsCell.rowHeight
-        tableView.tableFooterView = UIView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.isHidden = true
-        return tableView
-    }()
-    private lazy var searchTextField: SearchTextField = {
-        let textField = SearchTextField(placeHolderText: "SearchListViewControllerSearchTextFieldPlaceholder".localized)
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.delegate = self
-        textField.backgroundColor = .magenta
-        return textField
-    }()
-    private lazy var verticalStackView: UIStackView = {
-        let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .vertical
-        stack.backgroundColor = .green
-        stack.distribution = .equalCentering
-        stack.alignment = .top
-        return stack
-    }()
-    private lazy var emptySearchView = {
-        let empty = EmptySearchListView(listStatus: .emptyList)
-        empty.translatesAutoresizingMaskIntoConstraints = false
-        empty.backgroundColor = .yellow
-                empty.isHidden = false
-        return empty
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
-        searchListComicsVM.delegate = self
+//        searchListComicsVM.delegate = self
     }
 }
 
 extension SearchListViewController {
     private func layout() {
-//                verticalStackView.addArrangedSubview(searchTextField)
-//                verticalStackView.addArrangedSubview(tableView)
-//                verticalStackView.addArrangedSubview(emptySearchView)
+
+        // wywalic layout, dodawac widoki gdzies indzie
+        // zimportowac ich extension
+        // osobny plik na same widoki w projekcie
+        // ustawiac tutaj delegate i operowac danymi na widoku
+//        view.addSubview(searchTextField)
 //        view.addSubview(verticalStackView)
         
-        view.addSubview(searchTextField)
-        view.addSubview(tableView)
-        view.addSubview(emptySearchView)
+//        view.addSubview(searchTextField)
+//        view.addSubview(tableView)
+//        view.addSubview(emptySearchView)
         
-        NSLayoutConstraint.activate([
-            searchTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            searchTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            searchTextField.widthAnchor.constraint(equalToConstant: view.frame.size.width),
-            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            tableView.topAnchor.constraint(equalToSystemSpacingBelow: searchTextField.bottomAnchor, multiplier: 3),
-            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            emptySearchView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            emptySearchView.topAnchor.constraint(equalToSystemSpacingBelow: tableView.bottomAnchor, multiplier: 2),
-            emptySearchView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            emptySearchView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-            
+//        NSLayoutConstraint.activate([
+////            searchTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+////            searchTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+////            searchTextField.widthAnchor.constraint(equalToConstant: view.frame.size.width),
+////            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+////            tableView.topAnchor.constraint(equalToSystemSpacingBelow: searchTextField.bottomAnchor, multiplier: 3),
+////            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+////            emptySearchView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+////            emptySearchView.topAnchor.constraint(equalToSystemSpacingBelow: tableView.bottomAnchor, multiplier: 2),
+////            emptySearchView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+////            emptySearchView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+//
 //            verticalStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
 //            verticalStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
 //            verticalStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
 //            verticalStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-        ])
+//        ])
     }
 }
 
@@ -114,31 +83,31 @@ extension SearchListViewController {
         }
     }
     
-    private func displayCorrectView() {
-        if searchListComicsVM.filteredComics.isEmpty {
-            tableView.isHidden = true
-                        emptySearchView.isHidden = false
-            emptySearchView.setListIsEmpty()
-            print("empty view")
-        } else {
-            tableView.isHidden = false
-                        emptySearchView.isHidden = true
-            print("data view")
-        }
-    }
+//    private func displayCorrectView() {
+//        if searchListComicsVM.filteredComics.isEmpty {
+//            tableView.isHidden = true
+//                        emptySearchView.isHidden = false
+//            emptySearchView.setListIsEmpty()
+//            print("empty view")
+//        } else {
+//            tableView.isHidden = false
+//                        emptySearchView.isHidden = true
+//            print("data view")
+//        }
+//    }
 }
 
-extension SearchListViewController: SearchComicsListViewModelDelegate {
-    func didFetchComics(_ comics: [ComicViewModel]) {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-            let estimatedHeight = self.tableView.numberOfRows(inSection: SearchListViewControllerParameters.tableNumberOfRowsInSection)
-            let width = self.view.frame.size.width
-            self.tableView.frame = CGRect(x: SearchListViewControllerParameters.tableViewFrameX, y: SearchListViewControllerParameters.tableViewFrameY, width: Int(width), height: estimatedHeight)
-                        self.displayCorrectView()
-        }
-    }
-}
+//extension SearchListViewController: SearchComicsListViewModelDelegate {
+//    func didFetchComics(_ comics: [ComicViewModel]) {
+//        DispatchQueue.main.async {
+//            self.tableView.reloadData()
+//            let estimatedHeight = self.tableView.numberOfRows(inSection: SearchListViewControllerParameters.tableNumberOfRowsInSection)
+//            let width = self.view.frame.size.width
+//            self.tableView.frame = CGRect(x: SearchListViewControllerParameters.tableViewFrameX, y: SearchListViewControllerParameters.tableViewFrameY, width: Int(width), height: estimatedHeight)
+//                        self.displayCorrectView()
+//        }
+//    }
+//}
 
 extension SearchListViewController: SearchTextFieldDelegate {
     func editingDidEnd(_ sender: SearchTextField) {
