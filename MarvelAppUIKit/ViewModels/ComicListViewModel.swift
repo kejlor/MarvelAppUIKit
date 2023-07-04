@@ -8,16 +8,10 @@
 import Foundation
 import Combine
 
-protocol ComicListViewModelDelegate: AnyObject {
-    func didFetchComics(_ comics: [ComicViewModel])
-    func didFetchMoreComics(_ comics: [ComicViewModel])
-}
-
 final class ComicListViewModel {
     @Published private(set) var comics = [ComicViewModel]()
-    var isShowingAlertGetComics = false
-    var isShowingAlertGetMoreComics = false
-    weak var delegate: ComicListViewModelDelegate?
+    @Published private(set) var isShowingAlertGetComics = false
+    @Published private(set) var isShowingAlertGetMoreComics = false
     private var comicsRepository: ComicsRepository
     private var publisher: AnyPublisher<ComicsResponse, Error>?
     private var bag = Set<AnyCancellable>()
@@ -28,6 +22,7 @@ final class ComicListViewModel {
 
     func getComics() {
         self.comicsRepository.fetchComics()
+            .receive(on: RunLoop.main)
             .sink { completion in
                 switch completion {
                 case .finished:
@@ -37,12 +32,14 @@ final class ComicListViewModel {
                 }
             } receiveValue: { [weak self] (comics) in
                 self?.comics = comics.data.results.compactMap(ComicViewModel.init)
+                print(comics)
             }
             .store(in: &bag)
     }
     
     func getMoreComics() {
         self.comicsRepository.fetchMoreComics()
+            .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
                 case .finished:
