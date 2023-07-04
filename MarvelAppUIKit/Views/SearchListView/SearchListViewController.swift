@@ -52,7 +52,7 @@ extension SearchListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return SearchListViewControllerParameters.numberOfSections
     }
 }
 
@@ -64,11 +64,7 @@ extension SearchListViewController {
     }
     
     private func displayCorrectView() {
-        if searchListComicsVM.filteredComics.isEmpty {
-            self.searchListView.showEmptySarchView()
-        } else {
-            self.searchListView.showTableView()
-        }
+        searchListComicsVM.filteredComics.isEmpty ? self.searchListView.showEmptySarchView() : self.searchListView.showTableView()
     }
 }
 
@@ -105,5 +101,5 @@ extension SearchListViewController {
 }
 
 enum SearchListViewControllerParameters {
-    
+    static let numberOfSections: Int = 1
 }
