@@ -9,6 +9,7 @@ import Foundation
 
 protocol SearchComicsListViewModelDelegate: AnyObject {
     func didFetchComics(_ comics: [ComicViewModel])
+    func willDisplayAllert()
 }
 
 final class SearchComicsListViewModel {
@@ -27,7 +28,7 @@ final class SearchComicsListViewModel {
             try await self.filteredComics = comicsRepository.fetchComicsByTitle(title: title).data.results.compactMap(ComicViewModel.init)
             delegate?.didFetchComics(self.filteredComics)
         } catch {
-            print("Request failed with error: \(error)")
+            delegate?.willDisplayAllert()
         }
     }
 }

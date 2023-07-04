@@ -39,3 +39,6 @@
 
 // SearchListViewController
 "SearchListViewControllerSearchTextFieldPlaceholder" = "Search comics by title";
+"SearchListViewControllerAlertTitle" = "Network Error";
+"SearchListViewControllerAlertMessage" = "Unable to fetch comics. Please provide correct title.";
+"SearchListViewControllerAlertButtonTitle" = "Ok";

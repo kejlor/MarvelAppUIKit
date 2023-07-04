@@ -39,3 +39,6 @@
 
 // SearchListViewController
 "SearchListViewControllerSearchTextFieldPlaceholder" = "Szukaj komiksów po tytule";
+"SearchListViewControllerAlertTitle" = "Błąd sieci";
+"SearchListViewControllerAlertMessage" = "Nie można pobrać komiksów. Podaj poprawny tytuł.";
+"SearchListViewControllerAlertButtonTitle" = "Ok";

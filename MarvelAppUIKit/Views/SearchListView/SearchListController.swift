@@ -73,6 +73,12 @@ extension SearchListViewController {
 }
 
 extension SearchListViewController: SearchComicsListViewModelDelegate {
+    func willDisplayAllert() {
+        DispatchQueue.main.async {
+            self.showErrorAlert()
+        }
+    }
+    
     func didFetchComics(_ comics: [ComicViewModel]) {
         DispatchQueue.main.async {
             self.displayCorrectView()
@@ -86,4 +92,14 @@ extension SearchListViewController: SearchTextFieldDelegate {
     }
 }
 
-
+extension SearchListViewController {
+    private func showErrorAlert() {
+        let alert = UIAlertController(title: "SearchListViewControllerAlertTitle".localized,
+                                      message: "SearchListViewControllerAlertMessage".localized,
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "SearchListViewControllerAlertButtonTitle".localized, style: .default, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
+    }
+}
