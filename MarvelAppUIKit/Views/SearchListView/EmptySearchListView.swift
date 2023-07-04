@@ -23,7 +23,7 @@ class EmptySearchListView: UIView {
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = .zero
         label.text = "EmptySearchListViewLabelMessage".localized
-        label.backgroundColor = .blue
+        label.setHeight(EmptySearchListViewParameters.iconHeight)
         return label
     }()
     private lazy var messageIcon: UIImageView = {
@@ -31,7 +31,8 @@ class EmptySearchListView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(systemName: "book")?.withTintColor(.gray, renderingMode: .alwaysOriginal)
         imageView.contentMode = .scaleAspectFit
-        imageView.backgroundColor = .red
+        imageView.setWidth(EmptySearchListViewParameters.iconWidth)
+        imageView.setHeight(EmptySearchListViewParameters.iconHeight)
         return imageView
     }()
     private lazy var verticalStackView: UIStackView = {
@@ -39,9 +40,14 @@ class EmptySearchListView: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = EmptySearchListViewParameters.verticalStackSpacing
-        stackView.distribution = .equalCentering
         stackView.alignment = .center
         return stackView
+    }()
+    private lazy var spacer: UIView = {
+        let customSpacer = UIView()
+        customSpacer.translatesAutoresizingMaskIntoConstraints = false
+        customSpacer.setHeight(EmptySearchListViewParameters.spacerHeight)
+        return customSpacer
     }()
     
     init(listStatus: ListStatus) {
@@ -77,18 +83,10 @@ extension EmptySearchListView {
     private func layout() {
         verticalStackView.addArrangedSubview(messageIcon)
         verticalStackView.addArrangedSubview(messageLabel)
+        verticalStackView.addArrangedSubview(spacer)
         
         addSubview(verticalStackView)
-        
-        NSLayoutConstraint.activate([
-            verticalStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            verticalStackView.topAnchor.constraint(equalTo: topAnchor),
-            verticalStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            verticalStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            messageIcon.widthAnchor.constraint(equalToConstant: EmptySearchListViewParameters.iconWidth),
-            messageIcon.heightAnchor.constraint(equalToConstant: EmptySearchListViewParameters.iconHeight),
-            messageLabel.heightAnchor.constraint(equalToConstant: EmptySearchListViewParameters.labelHeight)
-        ])
+        verticalStackView.fillSuperView()
     }
 }
 
@@ -97,4 +95,5 @@ enum EmptySearchListViewParameters {
     static let iconWidth: CGFloat = 100
     static let iconHeight: CGFloat = 100
     static let labelHeight: CGFloat = 50
+    static let spacerHeight: CGFloat = 500
 }
