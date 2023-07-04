@@ -42,7 +42,7 @@ extension ComicsListViewController {
         getComics()
     }
     
-    private func setupTableView() {        
+    private func setupTableView() {
         view.addSubview(tableView)
         
         NSLayoutConstraint.activate([
@@ -79,7 +79,7 @@ extension ComicsListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return ComicsListViewControllerParameters.numberOfSections
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -92,15 +92,14 @@ extension ComicsListViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension ComicsListViewController {
     private func getComics() {
-        Task {
-            await comicListVM.getComics()
-        }
+        
+        comicListVM.getComics()
     }
     
     private func getMoreComics() {
-        Task {
-            await comicListVM.getMoreComics()
-        }
+        
+        comicListVM.getMoreComics()
+        
     }
 }
 
@@ -121,4 +120,5 @@ extension ComicsListViewController: ComicListViewModelDelegate {
 enum ComicsListViewControllerParameters {
     static let amountToSubtractFromArray: Int = 1
     static let headerTitleMultiplier: CGFloat = 3
+    static let numberOfSections: Int = 1
 }

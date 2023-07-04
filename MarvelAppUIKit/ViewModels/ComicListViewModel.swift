@@ -14,7 +14,7 @@ protocol ComicListViewModelDelegate: AnyObject {
 }
 
 final class ComicListViewModel {
-    var comics = [ComicViewModel]()
+    @Published private(set) var comics = [ComicViewModel]()
     var isShowingAlertGetComics = false
     var isShowingAlertGetMoreComics = false
     weak var delegate: ComicListViewModelDelegate?
@@ -27,7 +27,7 @@ final class ComicListViewModel {
     }
 
     func getComics() {
-        try? self.comicsRepository.fetchComics()
+        self.comicsRepository.fetchComics()
             .sink { completion in
                 switch completion {
                 case .finished:
@@ -35,14 +35,14 @@ final class ComicListViewModel {
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
-            } receiveValue: { (comics) in
-                self.comics = comics.data.results.compactMap(ComicViewModel.init)
+            } receiveValue: { [weak self] (comics) in
+                self?.comics = comics.data.results.compactMap(ComicViewModel.init)
             }
             .store(in: &bag)
     }
     
     func getMoreComics() {
-        try? self.comicsRepository.fetchMoreComics()
+        self.comicsRepository.fetchMoreComics()
             .sink { completion in
                 switch completion {
                 case .finished:
@@ -50,8 +50,8 @@ final class ComicListViewModel {
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
-            } receiveValue: { (comics) in
-                self.comics.append(contentsOf: comics.data.results.compactMap(ComicViewModel.init))
+            } receiveValue: { [weak self] (comics) in
+                self?.comics.append(contentsOf: comics.data.results.compactMap(ComicViewModel.init))
             }
             .store(in: &bag)
     }

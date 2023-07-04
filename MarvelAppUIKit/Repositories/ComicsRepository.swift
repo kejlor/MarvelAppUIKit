@@ -21,18 +21,18 @@ public class ComicsRepository {
         self.networkService = networkService
     }
     
-    func fetchComics() throws -> AnyPublisher<ComicsResponse, Error> {
+    func fetchComics() -> AnyPublisher<ComicsResponse, Error> {
         self.offsetLimit = 0
-        return try networkService.fetchData(url: urlString)
+        return networkService.fetchData(url: urlString)
     }
    
-    func fetchMoreComics() throws -> AnyPublisher<ComicsResponse, Error> {
+    func fetchMoreComics() -> AnyPublisher<ComicsResponse, Error> {
         self.offsetLimit += 100
-        return try networkService.fetchData(url: urlString)
+        return networkService.fetchData(url: urlString)
     }
     
-    func fetchComicsByTitle(title: String) throws -> AnyPublisher<ComicsResponse, Error> {
+    func fetchComicsByTitle(title: String) -> AnyPublisher<ComicsResponse, Error> {
         let comicsURL = urlString + "&titleStartsWith=\(title)"
-        return try networkService.fetchData(url: comicsURL)
+        return networkService.fetchData(url: comicsURL)
     }
 }
