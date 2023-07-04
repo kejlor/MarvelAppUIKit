@@ -9,35 +9,38 @@ import UIKit
 
 class DetailComicsView: UIViewController {
     weak var coordinator: MainCoordinator?
-    let stackView = UIStackView()
+    private lazy var verticalStackView: UIStackView = {
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .vertical
+        stack.spacing = DetailComicsViewParameters.stackSpacing
+        return stack
+    }()
     let label = UILabel()
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "DetailComicsViewTitle".localized
+        label.font = UIFont.preferredFont(forTextStyle: .title1)
+        return label
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        style()
         layout()
     }
 }
 
 extension DetailComicsView {
-    func style() {
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.spacing = 20
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Welcome to the detail view"
-        label.font = UIFont.preferredFont(forTextStyle: .title1)
-    }
-    
     func layout() {
-        stackView.addArrangedSubview(label)
+        verticalStackView.addArrangedSubview(titleLabel)
         
-        view.addSubview(stackView)
+        view.addSubview(verticalStackView)
         
-        NSLayoutConstraint.activate([
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-        ])
+        verticalStackView.fillSuperView()
     }
+}
+
+enum DetailComicsViewParameters {
+    static let stackSpacing: CGFloat = 20
 }
