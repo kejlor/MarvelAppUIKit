@@ -18,7 +18,7 @@ class SearchTextField: UIView {
         imageView.image = UIImage(systemName: "magnifyingglass")?.withTintColor(.gray, renderingMode: .alwaysOriginal)
         return imageView
     }()
-    public private (set) lazy var textField: UITextField = {
+    public private (set) lazy var searchTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.textColor = .black
@@ -33,8 +33,8 @@ class SearchTextField: UIView {
     weak var delegate: SearchTextFieldDelegate?
     
     var text: String? {
-        get { return textField.text}
-        set { textField.text = newValue}
+        get { return searchTextField.text}
+        set { searchTextField.text = newValue}
     }
     
     init(placeHolderText: String) {
@@ -62,21 +62,21 @@ extension SearchTextField {
     
     func layout() {
         addSubview(magnifyingglassImageView)
-        addSubview(textField)
+        addSubview(searchTextField)
         
         NSLayoutConstraint.activate([
-            magnifyingglassImageView.centerYAnchor.constraint(equalTo: textField.centerYAnchor),
+            magnifyingglassImageView.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor),
             magnifyingglassImageView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 2)
         ])
         
         NSLayoutConstraint.activate([
-            textField.topAnchor.constraint(equalTo: topAnchor),
-            textField.leadingAnchor.constraint(equalToSystemSpacingAfter: magnifyingglassImageView.trailingAnchor, multiplier: 1),
-            textField.trailingAnchor.constraint(equalTo: trailingAnchor)
+            searchTextField.topAnchor.constraint(equalTo: topAnchor),
+            searchTextField.leadingAnchor.constraint(equalToSystemSpacingAfter: magnifyingglassImageView.trailingAnchor, multiplier: 1),
+            searchTextField.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
         
         magnifyingglassImageView.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
-        textField.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .horizontal)
+        searchTextField.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .horizontal)
     }
 }
 

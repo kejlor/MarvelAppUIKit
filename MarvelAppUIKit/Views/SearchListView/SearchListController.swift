@@ -82,7 +82,7 @@ extension SearchListViewController: SearchComicsListViewModelDelegate {
 
 extension SearchListViewController: SearchTextFieldDelegate {
     func editingDidEnd(_ sender: SearchTextField) {
-        getComicsByTitle(title: sender.textField.text ?? "")
+        getComicsByTitle(title: sender.searchTextField.text ?? "")
     }
 }
 
