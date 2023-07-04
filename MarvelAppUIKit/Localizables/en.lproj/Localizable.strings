@@ -32,3 +32,16 @@
 "ComicsCellComicTitle" = "Comics title";
 "ComicsCellComicWritters" = "Comics writters";
 "ComicsCellComicDescription" = "Comics description";
+
+// EmptySearchListView
+"EmptySearchListViewLabelMessage" = "Start typing to find particular comics.";
+"EmptySearchListViewComicsNotFound" = "Comics not found. Try providing a correct title.";
+
+// SearchListViewController
+"SearchListViewControllerSearchTextFieldPlaceholder" = "Search comics by title";
+"SearchListViewControllerAlertTitle" = "Network Error";
+"SearchListViewControllerAlertMessage" = "Unable to fetch comics. Please provide correct title.";
+"SearchListViewControllerAlertButtonTitle" = "Ok";
+
+// DetailComicsView
+"DetailComicsViewTitle" = "Welcome to the detail view";

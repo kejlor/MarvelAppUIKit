@@ -43,6 +43,7 @@ class ComicsCell: UITableViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
+        imageView.setWidth(ComicsCellParameters.comicImageWidth)
         return imageView
     }()
     private lazy var horizontalStackView: UIStackView = {
@@ -79,7 +80,6 @@ class ComicsCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
 
 extension ComicsCell {
@@ -90,18 +90,10 @@ extension ComicsCell {
         verticalStackView.addArrangedSubview(comicDescription)
         horizontalStackView.addArrangedSubview(verticalStackView)
         
-        contentView.addSubview(horizontalStackView)
-        contentView.addSubview(chevronImageView)
+        contentView.addSubviews(horizontalStackView, chevronImageView)
         
-        NSLayoutConstraint.activate([
-            horizontalStackView.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: ComicsCellParameters.layoutMultiplier),
-            horizontalStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: ComicsCellParameters.layoutMultiplier),
-            bottomAnchor.constraint(equalToSystemSpacingBelow: horizontalStackView.bottomAnchor, multiplier: ComicsCellParameters.layoutMultiplier),
-            trailingAnchor.constraint(equalToSystemSpacingAfter: horizontalStackView.trailingAnchor, multiplier: ComicsCellParameters.layoutMultiplier),
-            chevronImageView.topAnchor.constraint(equalTo: centerYAnchor),
-            trailingAnchor.constraint(equalToSystemSpacingAfter: chevronImageView.trailingAnchor, multiplier: ComicsCellParameters.layoutMultiplier),
-            comicImage.widthAnchor.constraint(equalToConstant: ComicsCellParameters.comicImageWidth)
-        ])
+        horizontalStackView.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor, paddingTop: ComicsCellParameters.horizontalStackPadding, paddingLeft: ComicsCellParameters.horizontalStackPadding)
+        chevronImageView.anchor(top: contentView.centerYAnchor, right: contentView.rightAnchor)
     }
 }
 
@@ -123,4 +115,5 @@ enum ComicsCellParameters {
     static let horizontalStackSpacing: CGFloat = 10
     static let layoutMultiplier: CGFloat = 2
     static let comicImageWidth: CGFloat = 140
+    static let horizontalStackPadding: CGFloat = 10
 }

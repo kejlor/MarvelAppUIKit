@@ -9,6 +9,7 @@ import UIKit
 
 class ComicsListViewController: UIViewController {
     private var comicListVM: ComicListViewModel = ComicListViewModel()
+    weak var coordinator: Coordinator?
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.delegate = self

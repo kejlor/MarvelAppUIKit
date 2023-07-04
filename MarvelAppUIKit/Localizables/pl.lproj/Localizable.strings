@@ -32,3 +32,16 @@
 "ComicsCellComicTitle" = "Tytuł komiksu";
 "ComicsCellComicWritters" = "Autorzy komiksu";
 "ComicsCellComicDescription" = "Opis komiksu";
+
+// EmptySearchListView
+"EmptySearchListViewLabelMessage" = "Zacznij pisać aby znaleźć dane komiksy.";
+"EmptySearchListViewComicsNotFound" = "Nie znaleziono komiksów. Podaj poprawny tytuł.";
+
+// SearchListViewController
+"SearchListViewControllerSearchTextFieldPlaceholder" = "Szukaj komiksów po tytule";
+"SearchListViewControllerAlertTitle" = "Błąd sieci";
+"SearchListViewControllerAlertMessage" = "Nie można pobrać komiksów. Podaj poprawny tytuł.";
+"SearchListViewControllerAlertButtonTitle" = "Ok";
+
+// DetailComicsView
+"DetailComicsViewTitle" = "Witaj w szczegółowym widoku";
