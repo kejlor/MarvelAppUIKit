@@ -54,7 +54,6 @@ class EmptySearchListView: UIView {
         super.init(frame: CGRect.zero)
         self.listStatus = listStatus
         layout()
-//        checkMessageStatus()
     }
     
     required init?(coder: NSCoder) {

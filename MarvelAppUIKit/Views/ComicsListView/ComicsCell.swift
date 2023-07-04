@@ -89,7 +89,7 @@ extension ComicsCell {
         verticalStackView.addArrangedSubview(comicWritters)
         verticalStackView.addArrangedSubview(comicDescription)
         horizontalStackView.addArrangedSubview(verticalStackView)
-
+        
         contentView.addSubviews(horizontalStackView, chevronImageView)
         
         horizontalStackView.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor, paddingTop: ComicsCellParameters.horizontalStackPadding, paddingLeft: ComicsCellParameters.horizontalStackPadding)

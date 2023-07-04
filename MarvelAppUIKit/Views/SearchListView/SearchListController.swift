@@ -19,7 +19,7 @@ class SearchListViewController: UIViewController {
         searchListView.tableView.delegate = self
         searchListView.tableView.dataSource = self
         searchListView.searchTextField.delegate = self
-
+        
         layout()
     }
 }
