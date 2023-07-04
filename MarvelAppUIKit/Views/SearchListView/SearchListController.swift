@@ -44,7 +44,7 @@ extension SearchListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return searchListComicsVM.filteredComics.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -60,7 +60,6 @@ extension SearchListViewController {
     private func getComicsByTitle(title: String) {
         Task {
             await searchListComicsVM.getComicsByTitle(for: title)
-            print("search: \(searchListComicsVM.filteredComics)")
         }
     }
     
@@ -69,7 +68,6 @@ extension SearchListViewController {
             self.searchListView.showEmptySarchView()
         } else {
             self.searchListView.showTableView()
-            print("display correct view: \(searchListComicsVM.filteredComics)")
         }
     }
 }
@@ -77,8 +75,7 @@ extension SearchListViewController {
 extension SearchListViewController: SearchComicsListViewModelDelegate {
     func didFetchComics(_ comics: [ComicViewModel]) {
         DispatchQueue.main.async {
-//            self.displayCorrectView()
-            self.searchListView.showTableView()
+            self.displayCorrectView()
         }
     }
 }
@@ -86,7 +83,6 @@ extension SearchListViewController: SearchComicsListViewModelDelegate {
 extension SearchListViewController: SearchTextFieldDelegate {
     func editingDidEnd(_ sender: SearchTextField) {
         getComicsByTitle(title: sender.textField.text ?? "")
-        print("editing did end table: \(searchListComicsVM.filteredComics)")
     }
 }
 
