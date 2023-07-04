@@ -23,7 +23,7 @@
 		5C15DCE32A4C134600D2B1BB /* ComicsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15DCE22A4C134600D2B1BB /* ComicsCell.swift */; };
 		5C15DCEC2A4C449600D2B1BB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5C15DCEB2A4C449600D2B1BB /* Kingfisher */; };
 		5C15DCF02A4D8F6A00D2B1BB /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15DCEF2A4D8F6A00D2B1BB /* MainCoordinator.swift */; };
-		5C15DCF32A4D977E00D2B1BB /* SearchListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15DCF22A4D977E00D2B1BB /* SearchListController.swift */; };
+		5C15DCF32A4D977E00D2B1BB /* SearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15DCF22A4D977E00D2B1BB /* SearchListViewController.swift */; };
 		5C15DCF62A4D986F00D2B1BB /* DetailComicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15DCF52A4D986F00D2B1BB /* DetailComicsView.swift */; };
 		5C866EA12A4AF81F00F3305C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C866EA02A4AF81F00F3305C /* AppDelegate.swift */; };
 		5C866EAA2A4AF82200F3305C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C866EA92A4AF82200F3305C /* Assets.xcassets */; };
@@ -57,7 +57,7 @@
 		5C15DCE22A4C134600D2B1BB /* ComicsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsCell.swift; sourceTree = "<group>"; };
 		5C15DCED2A4D784B00D2B1BB /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5C15DCEF2A4D8F6A00D2B1BB /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
-		5C15DCF22A4D977E00D2B1BB /* SearchListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListController.swift; sourceTree = "<group>"; };
+		5C15DCF22A4D977E00D2B1BB /* SearchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListViewController.swift; sourceTree = "<group>"; };
 		5C15DCF52A4D986F00D2B1BB /* DetailComicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailComicsView.swift; sourceTree = "<group>"; };
 		5C866E9D2A4AF81F00F3305C /* MarvelAppUIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelAppUIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C866EA02A4AF81F00F3305C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -191,7 +191,7 @@
 		5C15DCF12A4D976A00D2B1BB /* SearchListView */ = {
 			isa = PBXGroup;
 			children = (
-				5C15DCF22A4D977E00D2B1BB /* SearchListController.swift */,
+				5C15DCF22A4D977E00D2B1BB /* SearchListViewController.swift */,
 				5CEA6D7C2A4DAE2900C8588D /* EmptySearchListView.swift */,
 				5CFEEDB42A52CBDC0002D1DB /* SearchListView.swift */,
 			);
@@ -361,7 +361,7 @@
 				5C15DCBB2A4B04B200D2B1BB /* DataResponse.swift in Sources */,
 				5C15DCBF2A4B051E00D2B1BB /* Creator.swift in Sources */,
 				5C15DCC12A4B052B00D2B1BB /* UrlResponse.swift in Sources */,
-				5C15DCF32A4D977E00D2B1BB /* SearchListController.swift in Sources */,
+				5C15DCF32A4D977E00D2B1BB /* SearchListViewController.swift in Sources */,
 				5C15DCD22A4B090500D2B1BB /* ComicListViewModel.swift in Sources */,
 				5CFEEDB82A52D0C80002D1DB /* UIView+Ext.swift in Sources */,
 				5C15DCF02A4D8F6A00D2B1BB /* MainCoordinator.swift in Sources */,

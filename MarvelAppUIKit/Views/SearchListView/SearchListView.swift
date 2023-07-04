@@ -53,7 +53,7 @@ class SearchListView: UIView {
     }
     
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: 200, height: 200)
+        return CGSize(width: SearchListViewParameters.intrinsicContentSize, height: SearchListViewParameters.intrinsicContentSize)
     }
 }
 
@@ -93,4 +93,5 @@ enum SearchListViewParameters {
     static let searchTextFieldHeight: CGFloat = 50
     static let emptySearchView: CGFloat = 150
     static let tableFrameEstimatedHeight: Int = 200
+    static let intrinsicContentSize: CGFloat = 200
 }
