@@ -7,8 +7,8 @@
 
 import UIKit
 
-class TabbarController: UITabBarController {
-    weak var coordinator: TabbarCoordinator?
+class TabBarController: UITabBarController {
+    weak var coordinator: TabBarCoordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,7 +17,6 @@ class TabbarController: UITabBarController {
     func addViewControllers(_ vcs: [UIViewController]) {
         let items = [UITabBarItem(tabBarSystemItem: .favorites, tag: 0),
                      UITabBarItem(tabBarSystemItem: .search, tag: 1)]
-                //tu tworzysz itemy dolnego paska
             setViewControllers(vcs, animated: true)
             
             for (index, vc) in vcs.enumerated() {

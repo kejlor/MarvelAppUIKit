@@ -7,10 +7,10 @@
 
 import UIKit
 
-class TabbarCoordinator: Coordinator {
+class TabBarCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
-    var tabViewController = TabbarController()
+    var tabViewController = TabBarController()
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController

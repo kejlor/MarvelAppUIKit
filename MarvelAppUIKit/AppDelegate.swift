@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let tabBarController = UITabBarController()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        let coordinator = TabbarCoordinator(navigationController: navController)
+        let coordinator = TabBarCoordinator(navigationController: navController)
         
         coordinator.start()
         

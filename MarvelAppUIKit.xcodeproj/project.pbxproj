@@ -29,8 +29,8 @@
 		5C866EAA2A4AF82200F3305C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C866EA92A4AF82200F3305C /* Assets.xcassets */; };
 		5C866EAD2A4AF82200F3305C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C866EAB2A4AF82200F3305C /* LaunchScreen.storyboard */; };
 		5CEA6D7D2A4DAE2900C8588D /* EmptySearchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA6D7C2A4DAE2900C8588D /* EmptySearchListView.swift */; };
-		5CEA6D802A4DB00800C8588D /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA6D7F2A4DB00800C8588D /* TabbarController.swift */; };
-		5CEA6D822A4DB4F300C8588D /* TabbarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA6D812A4DB4F300C8588D /* TabbarCoordinator.swift */; };
+		5CEA6D802A4DB00800C8588D /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA6D7F2A4DB00800C8588D /* TabBarController.swift */; };
+		5CEA6D822A4DB4F300C8588D /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA6D812A4DB4F300C8588D /* TabBarCoordinator.swift */; };
 		5CEA6D842A4DB7E300C8588D /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA6D832A4DB7E300C8588D /* CoordinatorProtocol.swift */; };
 		5CEA6D862A4EBC8300C8588D /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA6D852A4EBC8300C8588D /* SearchCoordinator.swift */; };
 		5CEA6D882A4EC0E600C8588D /* SearchComicsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA6D872A4EC0E600C8588D /* SearchComicsListViewModel.swift */; };
@@ -65,8 +65,8 @@
 		5C866EAC2A4AF82200F3305C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C866EAE2A4AF82200F3305C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CEA6D7C2A4DAE2900C8588D /* EmptySearchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySearchListView.swift; sourceTree = "<group>"; };
-		5CEA6D7F2A4DB00800C8588D /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
-		5CEA6D812A4DB4F300C8588D /* TabbarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarCoordinator.swift; sourceTree = "<group>"; };
+		5CEA6D7F2A4DB00800C8588D /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		5CEA6D812A4DB4F300C8588D /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		5CEA6D832A4DB7E300C8588D /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		5CEA6D852A4EBC8300C8588D /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		5CEA6D872A4EC0E600C8588D /* SearchComicsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchComicsListViewModel.swift; sourceTree = "<group>"; };
@@ -248,8 +248,8 @@
 		5CEA6D7E2A4DAFF600C8588D /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
-				5CEA6D7F2A4DB00800C8588D /* TabbarController.swift */,
-				5CEA6D812A4DB4F300C8588D /* TabbarCoordinator.swift */,
+				5CEA6D7F2A4DB00800C8588D /* TabBarController.swift */,
+				5CEA6D812A4DB4F300C8588D /* TabBarCoordinator.swift */,
 			);
 			path = Tabbar;
 			sourceTree = "<group>";
@@ -349,11 +349,11 @@
 				5C15DCB92A4B049B00D2B1BB /* Comic.swift in Sources */,
 				5CEA6D8D2A4EC9B100C8588D /* UIResponder+Utils.swift in Sources */,
 				5C15DCDC2A4B09C000D2B1BB /* String+Ext.swift in Sources */,
-				5CEA6D822A4DB4F300C8588D /* TabbarCoordinator.swift in Sources */,
+				5CEA6D822A4DB4F300C8588D /* TabBarCoordinator.swift in Sources */,
 				5C15DCBD2A4B050F00D2B1BB /* Thumbnail.swift in Sources */,
 				5CEA6D8B2A4EC43600C8588D /* SearchTextField.swift in Sources */,
 				5CEA6D7D2A4DAE2900C8588D /* EmptySearchListView.swift in Sources */,
-				5CEA6D802A4DB00800C8588D /* TabbarController.swift in Sources */,
+				5CEA6D802A4DB00800C8588D /* TabBarController.swift in Sources */,
 				5C15DCC82A4B066C00D2B1BB /* APIKeyable.swift in Sources */,
 				5C15DCE32A4C134600D2B1BB /* ComicsCell.swift in Sources */,
 				5C15DCCE2A4B077900D2B1BB /* ComicsRepository.swift in Sources */,
