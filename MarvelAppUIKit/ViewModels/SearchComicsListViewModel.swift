@@ -8,14 +8,8 @@
 import Foundation
 import Combine
 
-protocol SearchComicsListViewModelDelegate: AnyObject {
-    func didFetchComics(_ comics: [ComicViewModel])
-    func willDisplayAllert()
-}
-
 final class SearchComicsListViewModel {
     @Published private(set) var filteredComics = [ComicViewModel]()
-    weak var delegate: SearchComicsListViewModelDelegate?
     private var comicsRepository: ComicsRepository
     private var publisher: AnyPublisher<ComicsResponse, Error>?
     private var bag = Set<AnyCancellable>()
@@ -26,6 +20,7 @@ final class SearchComicsListViewModel {
     
     func getComicsByTitle(for title: String) async {
         self.comicsRepository.fetchComicsByTitle(title: title)
+            .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
                 case .finished:

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class ComicsListViewController: UIViewController {
     private var comicListVM: ComicListViewModel = ComicListViewModel()
@@ -31,7 +32,6 @@ class ComicsListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        comicListVM.delegate = self
     }
 }
 
@@ -45,12 +45,7 @@ extension ComicsListViewController {
     private func setupTableView() {
         view.addSubview(tableView)
         
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-        ])
+        tableView.fillSafeAreaSuperView()
     }
     
     private func setupTableHeaderView() {
@@ -92,28 +87,13 @@ extension ComicsListViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension ComicsListViewController {
     private func getComics() {
-        
         comicListVM.getComics()
+        tableView.reloadData()
     }
     
     private func getMoreComics() {
-        
         comicListVM.getMoreComics()
-        
-    }
-}
-
-extension ComicsListViewController: ComicListViewModelDelegate {
-    func didFetchMoreComics(_ comics: [ComicViewModel]) {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-    }
-    
-    func didFetchComics(_ comics: [ComicViewModel]) {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+        tableView.reloadData()
     }
 }
 

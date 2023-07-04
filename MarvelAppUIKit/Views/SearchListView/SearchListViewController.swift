@@ -15,7 +15,6 @@ class SearchListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchListView.tableView.register(ComicsCell.self, forCellReuseIdentifier: ComicsCell.reuseID)
-        searchListComicsVM.delegate = self
         searchListView.tableView.delegate = self
         searchListView.tableView.dataSource = self
         searchListView.searchTextField.delegate = self
@@ -68,19 +67,19 @@ extension SearchListViewController {
     }
 }
 
-extension SearchListViewController: SearchComicsListViewModelDelegate {
-    func willDisplayAllert() {
-        DispatchQueue.main.async {
-            self.showErrorAlert()
-        }
-    }
-    
-    func didFetchComics(_ comics: [ComicViewModel]) {
-        DispatchQueue.main.async {
-            self.displayCorrectView()
-        }
-    }
-}
+//extension SearchListViewController: SearchComicsListViewModelDelegate {
+//    func willDisplayAllert() {
+//        DispatchQueue.main.async {
+//            self.showErrorAlert()
+//        }
+//    }
+//    
+//    func didFetchComics(_ comics: [ComicViewModel]) {
+//        DispatchQueue.main.async {
+//            self.displayCorrectView()
+//        }
+//    }
+//}
 
 extension SearchListViewController: SearchTextFieldDelegate {
     func editingDidEnd(_ sender: SearchTextField) {
