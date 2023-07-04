@@ -103,3 +103,7 @@ extension SearchListViewController {
         present(alert, animated: true, completion: nil)
     }
 }
+
+enum SearchListViewControllerParameters {
+    
+}
