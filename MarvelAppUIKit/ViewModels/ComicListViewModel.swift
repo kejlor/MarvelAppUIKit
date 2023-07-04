@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 protocol ComicListViewModelDelegate: AnyObject {
     func didFetchComics(_ comics: [ComicViewModel])
@@ -18,27 +19,41 @@ final class ComicListViewModel {
     var isShowingAlertGetMoreComics = false
     weak var delegate: ComicListViewModelDelegate?
     private var comicsRepository: ComicsRepository
+    private var publisher: AnyPublisher<ComicsResponse, Error>?
+    private var bag = Set<AnyCancellable>()
     
     init(comicsRepository: ComicsRepository = ComicsRepository(networkService: NetworkService())) {
         self.comicsRepository = comicsRepository
     }
-    
-    func getComics() async {
-        do {
-            try await self.comics = comicsRepository.fetchComics().data.results.compactMap(ComicViewModel.init)
-            delegate?.didFetchComics(self.comics)
-        } catch {
-            isShowingAlertGetComics = true
-        }
+
+    func getComics() {
+        try? self.comicsRepository.fetchComics()
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            } receiveValue: { (comics) in
+                self.comics = comics.data.results.compactMap(ComicViewModel.init)
+            }
+            .store(in: &bag)
     }
     
-    func getMoreComics() async {
-        do {
-            self.comics.append(contentsOf: try await comicsRepository.fetchMoreComics().data.results.compactMap(ComicViewModel.init))
-            delegate?.didFetchComics(self.comics)
-        } catch {
-            isShowingAlertGetMoreComics = true
-        }
+    func getMoreComics() {
+        try? self.comicsRepository.fetchMoreComics()
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            } receiveValue: { (comics) in
+                self.comics.append(contentsOf: comics.data.results.compactMap(ComicViewModel.init))
+            }
+            .store(in: &bag)
     }
 }
 
