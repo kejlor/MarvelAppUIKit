@@ -30,7 +30,6 @@ class MainCoordinator: Coordinator {
     func openDetailComicsView() {
         let vc = DetailComicsView()
         vc.coordinator = self
-        //        push(vc)
     }
     
     func childDidFinish(_ child: Coordinator) {
