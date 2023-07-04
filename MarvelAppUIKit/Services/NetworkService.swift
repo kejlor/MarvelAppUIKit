@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 class NetworkService {
     var session = URLSession.shared
@@ -22,9 +23,13 @@ class NetworkService {
         return try decoder.decode(T.self, from: data)
     }
     
-    func fetchImage(url: String) async throws -> Data? {
+    func fetchData<T: Decodable>(url: String) throws -> AnyPublisher<T, Error> {
         guard let url = URL(string: url) else { throw NetworkServiceError.invalidURL }
-        let (data, _) = try await session.data(from: url)
-        return data
+        
+        return URLSession.shared.dataTaskPublisher(for: url)
+            .map { $0.data }
+            .decode(type: T.self, decoder: JSONDecoder())
+            .receive(on: RunLoop.main)
+            .eraseToAnyPublisher()
     }
 }
