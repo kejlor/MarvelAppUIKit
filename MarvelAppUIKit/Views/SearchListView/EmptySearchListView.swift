@@ -18,7 +18,6 @@ class EmptySearchListView: UIView {
     private lazy var messageLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.preferredFont(forTextStyle: .title3)
         label.font = UIFont.boldSystemFont(ofSize: label.font.pointSize)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = .zero
