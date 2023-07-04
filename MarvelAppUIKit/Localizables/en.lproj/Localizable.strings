@@ -42,3 +42,6 @@
 "SearchListViewControllerAlertTitle" = "Network Error";
 "SearchListViewControllerAlertMessage" = "Unable to fetch comics. Please provide correct title.";
 "SearchListViewControllerAlertButtonTitle" = "Ok";
+
+// DetailComicsView
+"DetailComicsViewTitle" = "Welcome to the detail view";

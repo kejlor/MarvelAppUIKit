@@ -42,3 +42,6 @@
 "SearchListViewControllerAlertTitle" = "Błąd sieci";
 "SearchListViewControllerAlertMessage" = "Nie można pobrać komiksów. Podaj poprawny tytuł.";
 "SearchListViewControllerAlertButtonTitle" = "Ok";
+
+// DetailComicsView
+"DetailComicsViewTitle" = "Witaj w szczegółowym widoku";
