@@ -16,6 +16,7 @@ class SearchTextField: UIView {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(systemName: "magnifyingglass")?.withTintColor(.gray, renderingMode: .alwaysOriginal)
+        imageView.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
         return imageView
     }()
     public private (set) lazy var searchTextField: UITextField = {
@@ -26,6 +27,7 @@ class SearchTextField: UIView {
         textField.delegate = self
         textField.keyboardType = .asciiCapable
         textField.attributedPlaceholder = NSAttributedString(string:placeHolderText, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        textField.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .horizontal)
         return textField
     }()
     
@@ -51,7 +53,7 @@ class SearchTextField: UIView {
     }
     
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: UIView.noIntrinsicMetric, height: 60)
+        return CGSize(width: UIView.noIntrinsicMetric, height: SearchTextFieldParameters.intrinsicHeightSize)
     }
 }
 
@@ -61,22 +63,10 @@ extension SearchTextField {
     }
     
     func layout() {
-        addSubview(magnifyingglassImageView)
-        addSubview(searchTextField)
-        
-        NSLayoutConstraint.activate([
-            magnifyingglassImageView.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor),
-            magnifyingglassImageView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 2)
-        ])
-        
-        NSLayoutConstraint.activate([
-            searchTextField.topAnchor.constraint(equalTo: topAnchor),
-            searchTextField.leadingAnchor.constraint(equalToSystemSpacingAfter: magnifyingglassImageView.trailingAnchor, multiplier: 1),
-            searchTextField.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
-        
-        magnifyingglassImageView.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
-        searchTextField.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .horizontal)
+        addSubviews(magnifyingglassImageView, searchTextField)
+
+        magnifyingglassImageView.anchor(left: leftAnchor, paddingLeft: SearchTextFieldParameters.magnifyingglassImageViewPadding)
+        searchTextField.anchor(top: topAnchor, left: magnifyingglassImageView.rightAnchor, right: rightAnchor, paddingLeft: SearchTextFieldParameters.searchTextFieldPadding)
     }
 }
 
@@ -89,4 +79,10 @@ extension SearchTextField: UITextFieldDelegate {
         textField.endEditing(true)
         return true
     }
+}
+
+enum SearchTextFieldParameters {
+    static let intrinsicHeightSize: CGFloat = 60
+    static let magnifyingglassImageViewPadding: CGFloat = 20
+    static let searchTextFieldPadding: CGFloat = 5
 }
