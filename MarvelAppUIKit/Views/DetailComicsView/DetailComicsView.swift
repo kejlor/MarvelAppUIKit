@@ -16,7 +16,6 @@ class DetailComicsView: UIViewController {
         stack.spacing = DetailComicsViewParameters.stackSpacing
         return stack
     }()
-    let label = UILabel()
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
