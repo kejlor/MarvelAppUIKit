@@ -27,6 +27,12 @@
 
 // ComicsListViewController
 "ComicsListViewController" = "Komiksy Marvel'a";
+"ComicsListViewController" = "Marvel Comics";
+"ComicsListViewControllerErrorWhileGetComicsTitle" = "Błąd sieci";
+"ComicsListViewControllerErrorWhileGetComicsMessage" = "Nie można pobrać komiksów. Spróbuj ponownie.";
+"ComicsListViewControllerErrorWhileGetMoreComicsTitle" = "Błąd sieci";
+"ComicsListViewControllerErrorWhileGetMoreComicsMessage" = "Nie można pobrać więcej komiksów. Spróbuj ponownie.";
+"ComicsListViewControllerAlertButtonTitle" = "Ok";
 
 // ComicsCell
 "ComicsCellComicTitle" = "Tytuł komiksu";
