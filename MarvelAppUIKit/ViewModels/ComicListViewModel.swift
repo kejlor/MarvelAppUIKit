@@ -9,19 +9,24 @@ import Foundation
 import Combine
 
 final class ComicListViewModel {
-    @Published private(set) var comics = [ComicViewModel]()
-    @Published private(set) var isShowingAlertGetComics = false
-    @Published private(set) var isShowingAlertGetMoreComics = false
+    private(set) var comics = [ComicViewModel]()
+    private(set) var isShowingAlertGetComics = false
+    private(set) var isShowingAlertGetMoreComics = false
     private var comicsRepository: ComicsRepository
-    private var publisher: AnyPublisher<ComicsResponse, Error>?
+    private(set) var publisher: AnyPublisher<ComicsResponse, Error>?
     private var bag = Set<AnyCancellable>()
+    var comicsFetched: (Bool) -> Void = {_ in}
+    var moreComicsFetched: (Bool) -> Void = {_ in}
+    var showErrorWhenGettingComics: (Bool) -> Void = {_ in}
+    var showErrorWhenGettingMoreComics: (Bool) -> Void = {_ in}
     
     init(comicsRepository: ComicsRepository = ComicsRepository(networkService: NetworkService())) {
         self.comicsRepository = comicsRepository
     }
-
+    
     func getComics() {
         self.comicsRepository.fetchComics()
+            .eraseToAnyPublisher()
             .receive(on: RunLoop.main)
             .sink { completion in
                 switch completion {
@@ -29,16 +34,19 @@ final class ComicListViewModel {
                     break
                 case .failure(let error):
                     print(error.localizedDescription)
+                    self.showErrorWhenGettingComics(true)
+                    self.comicsFetched(false)
                 }
             } receiveValue: { [weak self] (comics) in
                 self?.comics = comics.data.results.compactMap(ComicViewModel.init)
-                print(comics)
+                self?.comicsFetched(true)
             }
             .store(in: &bag)
     }
     
     func getMoreComics() {
         self.comicsRepository.fetchMoreComics()
+            .eraseToAnyPublisher()
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
@@ -46,9 +54,12 @@ final class ComicListViewModel {
                     break
                 case .failure(let error):
                     print(error.localizedDescription)
+                    self.showErrorWhenGettingMoreComics(true)
+                    self.comicsFetched(false)
                 }
             } receiveValue: { [weak self] (comics) in
                 self?.comics.append(contentsOf: comics.data.results.compactMap(ComicViewModel.init))
+                self?.moreComicsFetched(true)
             }
             .store(in: &bag)
     }
@@ -69,7 +80,7 @@ class ComicViewModel: Identifiable, Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.comic = try container.decode(Comic.self, forKey: .comic)
     }
-
+    
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(comic, forKey: .comic)
