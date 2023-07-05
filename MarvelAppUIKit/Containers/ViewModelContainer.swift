@@ -17,7 +17,6 @@ class ViewModelContainer {
     }
     
     private func setupContainers() {
-        
         container.register(ComicListViewModelProtocol.self) { _ in
             return ComicListViewModel()
         }
