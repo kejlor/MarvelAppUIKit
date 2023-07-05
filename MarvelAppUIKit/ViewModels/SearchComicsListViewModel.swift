@@ -11,8 +11,8 @@ import Combine
 protocol SearchComicsListViewModelProtocol {
     func getComicsByTitle(for title: String)
     var filteredComics: [ComicViewModel] { get }
-    var comicsFetchedByTitle: (Bool) -> Void { get }
-    var willShowAlert: (Bool) -> Void { get }
+    var comicsFetchedByTitle: (Bool) -> Void { get set }
+    var willShowAlert: (Bool) -> Void { get set }
 }
 
 final class SearchComicsListViewModel: SearchComicsListViewModelProtocol {

@@ -12,10 +12,10 @@ protocol ComicListViewModelProtocol {
     func getComics()
     func getMoreComics()
     var comics: [ComicViewModel] { get }
-    var comicsFetched: (Bool) -> Void { get }
-    var moreComicsFetched: (Bool) -> Void { get }
-    var showErrorWhenGettingComics: (Bool) -> Void { get }
-    var showErrorWhenGettingMoreComics: (Bool) -> Void { get }
+    var comicsFetched: (Bool) -> Void { get set }
+    var moreComicsFetched: (Bool) -> Void { get set }
+    var showErrorWhenGettingComics: (Bool) -> Void { get set }
+    var showErrorWhenGettingMoreComics: (Bool) -> Void { get set }
 }
 
 final class ComicListViewModel: ComicListViewModelProtocol {
