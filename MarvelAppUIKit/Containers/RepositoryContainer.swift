@@ -19,7 +19,7 @@ class RepositoryContainer {
     
     private func setupContainer() {
         container.register(ComicsRepositoryProtocol.self) { _ in
-            return ComicsRepository(networkService: servicesContainer.container.resolve(NetworkServiceProtocol.self)!)
+            return ComicsRepository(networkService: self.servicesContainer.container.resolve(NetworkServiceProtocol.self)!)
         }.inObjectScope(.container)
     }
 }

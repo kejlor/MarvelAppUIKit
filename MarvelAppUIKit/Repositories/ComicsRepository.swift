@@ -15,7 +15,7 @@ protocol ComicsRepositoryProtocol {
 }
 
 public class ComicsRepository: ComicsRepositoryProtocol {
-    private var networkService: NetworkService
+    private var networkService: NetworkServiceProtocol
     private var baseURL = "https://gateway.marvel.com/v1/public/comics"
     private var offsetLimit = 0
     
@@ -23,7 +23,7 @@ public class ComicsRepository: ComicsRepositoryProtocol {
         return "\(baseURL)?ts=\(ENV.TIME_STAMP)&apikey=\(ENV.SERVICE_API_KEY)&hash=\(ENV.SERVICE_HASH)&limit=25&offset=\(offsetLimit)&orderBy=-onsaleDate"
     }
     
-    init(networkService: NetworkService) {
+    init(networkService: NetworkServiceProtocol) {
         self.networkService = networkService
     }
     
