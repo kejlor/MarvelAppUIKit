@@ -29,6 +29,7 @@
 		5C63B6872A5577AA000798AE /* ViewControllerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63B6862A5577AA000798AE /* ViewControllerContainer.swift */; };
 		5C63B6892A5577C8000798AE /* RepositoryContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63B6882A5577C8000798AE /* RepositoryContainer.swift */; };
 		5C63B68C2A557911000798AE /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 5C63B68B2A557911000798AE /* Swinject */; };
+		5C63B68F2A558C1F000798AE /* ServicesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63B68E2A558C1F000798AE /* ServicesContainer.swift */; };
 		5C866EA12A4AF81F00F3305C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C866EA02A4AF81F00F3305C /* AppDelegate.swift */; };
 		5C866EAA2A4AF82200F3305C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C866EA92A4AF82200F3305C /* Assets.xcassets */; };
 		5C866EAD2A4AF82200F3305C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C866EAB2A4AF82200F3305C /* LaunchScreen.storyboard */; };
@@ -66,6 +67,7 @@
 		5C63B6842A55779A000798AE /* ViewModelContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelContainer.swift; sourceTree = "<group>"; };
 		5C63B6862A5577AA000798AE /* ViewControllerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerContainer.swift; sourceTree = "<group>"; };
 		5C63B6882A5577C8000798AE /* RepositoryContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryContainer.swift; sourceTree = "<group>"; };
+		5C63B68E2A558C1F000798AE /* ServicesContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesContainer.swift; sourceTree = "<group>"; };
 		5C866E9D2A4AF81F00F3305C /* MarvelAppUIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelAppUIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C866EA02A4AF81F00F3305C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C866EA92A4AF82200F3305C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				5C63B6842A55779A000798AE /* ViewModelContainer.swift */,
 				5C63B6862A5577AA000798AE /* ViewControllerContainer.swift */,
 				5C63B6882A5577C8000798AE /* RepositoryContainer.swift */,
+				5C63B68E2A558C1F000798AE /* ServicesContainer.swift */,
 			);
 			path = Containers;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				5CFEEDB82A52D0C80002D1DB /* UIView+Ext.swift in Sources */,
 				5C15DCF02A4D8F6A00D2B1BB /* MainCoordinator.swift in Sources */,
 				5C866EA12A4AF81F00F3305C /* AppDelegate.swift in Sources */,
+				5C63B68F2A558C1F000798AE /* ServicesContainer.swift in Sources */,
 				5C63B6872A5577AA000798AE /* ViewControllerContainer.swift in Sources */,
 				5CFEEDB52A52CBDC0002D1DB /* SearchListView.swift in Sources */,
 			);
