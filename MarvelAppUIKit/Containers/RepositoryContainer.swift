@@ -6,4 +6,20 @@
 //
 
 import Foundation
+import Swinject
 
+class RepositoryContainer {
+    static let sharedContainer = RepositoryContainer()
+    let container = Container()
+    let servicesContainer = ServicesContainer.sharedContainer
+    
+    private init() {
+        setupContainer()
+    }
+    
+    private func setupContainer() {
+        container.register(ComicsRepositoryProtocol.self) { _ in
+            return ComicsRepository(networkService: servicesContainer.container.resolve(NetworkServiceProtocol.self)!)
+        }.inObjectScope(.container)
+    }
+}
