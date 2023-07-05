@@ -11,6 +11,7 @@ import Combine
 class ComicsListViewController: UIViewController {
     private var comicListVM: ComicListViewModel = ComicListViewModel()
     weak var coordinator: Coordinator?
+    private var publisher = PassthroughSubject<ComicsResponse, Error>()
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.delegate = self
@@ -31,6 +32,7 @@ class ComicsListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bind()
         setup()
     }
 }
@@ -87,13 +89,62 @@ extension ComicsListViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension ComicsListViewController {
     private func getComics() {
-        comicListVM.getComics()
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.comicListVM.comics.isEmpty ? self.comicListVM.getComics() : self.tableView.reloadData()
+        }
     }
     
     private func getMoreComics() {
-        comicListVM.getMoreComics()
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.comicListVM.getMoreComics()
+            self.tableView.reloadData()
+        }
+    }
+    
+    private func showErrorAlertWhenGettingComics() {
+        let alert = UIAlertController(title: "ComicsListViewControllerErrorWhileGetComicsTitle".localized,
+                                      message: "SearchListViewControllerAlertMessage".localized,
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "ComicsListViewControllerAlertButtonTitle".localized, style: .default, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func showErrorAlertWhenGettingMoreComics() {
+        let alert = UIAlertController(title: "ComicsListViewControllerErrorWhileGetMoreComicsTitle".localized,
+                                      message: "ComicsListViewControllerErrorWhileGetMoreComicsMessage".localized,
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "ComicsListViewControllerAlertButtonTitle".localized, style: .default, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func bind() {
+        comicListVM.comicsFetched = { hasFetchedComics in
+            DispatchQueue.main.async {
+                hasFetchedComics ? self.tableView.reloadData() : self.getComics()
+            }
+        }
+        
+        comicListVM.moreComicsFetched = { hasFetchedMoreComics in
+            DispatchQueue.main.async {
+                hasFetchedMoreComics ? self.tableView.reloadData() : self.getMoreComics()
+            }
+        }
+        
+        comicListVM.showErrorWhenGettingComics = { isShowingAlert in
+            if isShowingAlert {
+                self.showErrorAlertWhenGettingComics()
+            }
+        }
+        
+        comicListVM.showErrorWhenGettingMoreComics = { isShowingAlert in
+            if isShowingAlert {
+                self.showErrorAlertWhenGettingMoreComics()
+            }
+        }
     }
 }
 

@@ -18,7 +18,7 @@ class SearchListViewController: UIViewController {
         searchListView.tableView.delegate = self
         searchListView.tableView.dataSource = self
         searchListView.searchTextField.delegate = self
-        
+        bind()
         layout()
     }
 }
@@ -26,7 +26,6 @@ class SearchListViewController: UIViewController {
 extension SearchListViewController {
     private func layout() {
         view.addSubview(searchListView)
-        
         searchListView.fillSafeAreaSuperView()
     }
 }
@@ -57,29 +56,13 @@ extension SearchListViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension SearchListViewController {
     private func getComicsByTitle(title: String) {
-        Task {
-            await searchListComicsVM.getComicsByTitle(for: title)
-        }
+        searchListComicsVM.getComicsByTitle(for: title)
     }
     
     private func displayCorrectView() {
         searchListComicsVM.filteredComics.isEmpty ? self.searchListView.showEmptySarchView() : self.searchListView.showTableView()
     }
 }
-
-//extension SearchListViewController: SearchComicsListViewModelDelegate {
-//    func willDisplayAllert() {
-//        DispatchQueue.main.async {
-//            self.showErrorAlert()
-//        }
-//    }
-//    
-//    func didFetchComics(_ comics: [ComicViewModel]) {
-//        DispatchQueue.main.async {
-//            self.displayCorrectView()
-//        }
-//    }
-//}
 
 extension SearchListViewController: SearchTextFieldDelegate {
     func editingDidEnd(_ sender: SearchTextField) {
@@ -96,6 +79,22 @@ extension SearchListViewController {
         alert.addAction(UIAlertAction(title: "SearchListViewControllerAlertButtonTitle".localized, style: .default, handler: nil))
         
         present(alert, animated: true, completion: nil)
+    }
+    
+    private func bind() {
+        searchListComicsVM.comicsFetchedByTitle = { hasFetchedComicsByTitle in
+            DispatchQueue.main.async {
+                hasFetchedComicsByTitle ? self.searchListView.showTableView() : self.searchListView.showEmptySarchView()
+            }
+        }
+        
+        searchListComicsVM.willShowAlert = { showAlert in
+            if showAlert {
+                DispatchQueue.main.async {
+                    self.showErrorAlert()
+                }
+            }
+        }
     }
 }
 
