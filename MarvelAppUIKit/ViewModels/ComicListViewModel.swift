@@ -6,39 +6,62 @@
 //
 
 import Foundation
-
-protocol ComicListViewModelDelegate: AnyObject {
-    func didFetchComics(_ comics: [ComicViewModel])
-    func didFetchMoreComics(_ comics: [ComicViewModel])
-}
+import Combine
 
 final class ComicListViewModel {
-    var comics = [ComicViewModel]()
-    var isShowingAlertGetComics = false
-    var isShowingAlertGetMoreComics = false
-    weak var delegate: ComicListViewModelDelegate?
+    private(set) var comics = [ComicViewModel]()
+    private(set) var isShowingAlertGetComics = false
+    private(set) var isShowingAlertGetMoreComics = false
     private var comicsRepository: ComicsRepository
+    private(set) var publisher: AnyPublisher<ComicsResponse, Error>?
+    private var bag = Set<AnyCancellable>()
+    var comicsFetched: (Bool) -> Void = {_ in}
+    var moreComicsFetched: (Bool) -> Void = {_ in}
+    var showErrorWhenGettingComics: (Bool) -> Void = {_ in}
+    var showErrorWhenGettingMoreComics: (Bool) -> Void = {_ in}
     
     init(comicsRepository: ComicsRepository = ComicsRepository(networkService: NetworkService())) {
         self.comicsRepository = comicsRepository
     }
     
-    func getComics() async {
-        do {
-            try await self.comics = comicsRepository.fetchComics().data.results.compactMap(ComicViewModel.init)
-            delegate?.didFetchComics(self.comics)
-        } catch {
-            isShowingAlertGetComics = true
-        }
+    func getComics() {
+        self.comicsRepository.fetchComics()
+            .eraseToAnyPublisher()
+            .receive(on: RunLoop.main)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    self.showErrorWhenGettingComics(true)
+                    self.comicsFetched(false)
+                }
+            } receiveValue: { [weak self] (comics) in
+                self?.comics = comics.data.results.compactMap(ComicViewModel.init)
+                self?.comicsFetched(true)
+            }
+            .store(in: &bag)
     }
     
-    func getMoreComics() async {
-        do {
-            self.comics.append(contentsOf: try await comicsRepository.fetchMoreComics().data.results.compactMap(ComicViewModel.init))
-            delegate?.didFetchComics(self.comics)
-        } catch {
-            isShowingAlertGetMoreComics = true
-        }
+    func getMoreComics() {
+        self.comicsRepository.fetchMoreComics()
+            .eraseToAnyPublisher()
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    self.showErrorWhenGettingMoreComics(true)
+                    self.comicsFetched(false)
+                }
+            } receiveValue: { [weak self] (comics) in
+                self?.comics.append(contentsOf: comics.data.results.compactMap(ComicViewModel.init))
+                self?.moreComicsFetched(true)
+            }
+            .store(in: &bag)
     }
 }
 
@@ -57,7 +80,7 @@ class ComicViewModel: Identifiable, Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.comic = try container.decode(Comic.self, forKey: .comic)
     }
-
+    
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(comic, forKey: .comic)

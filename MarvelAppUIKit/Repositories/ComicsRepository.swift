@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 public class ComicsRepository {
     private var networkService: NetworkService
@@ -20,29 +21,18 @@ public class ComicsRepository {
         self.networkService = networkService
     }
     
-    func fetchComics() async throws -> ComicsResponse {
+    func fetchComics() -> AnyPublisher<ComicsResponse, Error> {
         self.offsetLimit = 0
-        return try await networkService.fetchData(url: urlString)
-        
+        return networkService.fetchData(url: urlString)
     }
-    
-    func fetchMoreComics() async throws -> ComicsResponse {
+   
+    func fetchMoreComics() -> AnyPublisher<ComicsResponse, Error> {
         self.offsetLimit += 100
-        return try await networkService.fetchData(url: urlString)
+        return networkService.fetchData(url: urlString)
     }
     
-    func fetchComicsByTitle(title: String) async throws -> ComicsResponse {
+    func fetchComicsByTitle(title: String) -> AnyPublisher<ComicsResponse, Error> {
         let comicsURL = urlString + "&titleStartsWith=\(title)"
-        return try await networkService.fetchData(url: comicsURL)
-    }
-    
-    func getImage(from string: String) async throws -> UIImage? {
-        guard let imageData = try await networkService.fetchImage(url: string) else { return nil }
-        return UIImage(data: imageData)
-    }
-    
-    func fetchDetailComicsById(from id: String) async throws -> ComicsResponse {
-        let detailComicURL = "\(baseURL)/\(id)?ts=1&apikey=\(ENV.SERVICE_API_KEY)&hash=\(ENV.SERVICE_HASH)"
-        return try await networkService.fetchData(url: detailComicURL)
+        return networkService.fetchData(url: comicsURL)
     }
 }
