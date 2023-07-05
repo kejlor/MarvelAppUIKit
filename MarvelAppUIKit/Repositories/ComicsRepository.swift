@@ -8,7 +8,13 @@
 import UIKit
 import Combine
 
-public class ComicsRepository {
+protocol ComicsRepositoryProtocol {
+    func fetchComics() -> AnyPublisher<ComicsResponse, Error>
+    func fetchMoreComics() -> AnyPublisher<ComicsResponse, Error>
+    func fetchComicsByTitle(title: String) -> AnyPublisher<ComicsResponse, Error>
+}
+
+public class ComicsRepository: ComicsRepositoryProtocol {
     private var networkService: NetworkService
     private var baseURL = "https://gateway.marvel.com/v1/public/comics"
     private var offsetLimit = 0

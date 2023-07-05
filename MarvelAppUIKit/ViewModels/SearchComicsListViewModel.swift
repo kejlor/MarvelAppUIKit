@@ -8,7 +8,14 @@
 import Foundation
 import Combine
 
-final class SearchComicsListViewModel {
+protocol SearchComicsListViewModelProtocol {
+    func getComicsByTitle(for title: String)
+    var filteredComics: [ComicViewModel] { get }
+    var comicsFetchedByTitle: (Bool) -> Void { get }
+    var willShowAlert: (Bool) -> Void { get }
+}
+
+final class SearchComicsListViewModel: SearchComicsListViewModelProtocol {
     private(set) var filteredComics = [ComicViewModel]()
     private var comicsRepository: ComicsRepository
     private var publisher: AnyPublisher<ComicsResponse, Error>?
