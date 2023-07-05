@@ -9,7 +9,7 @@ import UIKit
 import Combine
 
 class ComicsListViewController: UIViewController {
-    private var comicListVM: ComicListViewModel = ComicListViewModel()
+    var comicListVM: ComicListViewModelProtocol
     weak var coordinator: Coordinator?
     private var publisher = PassthroughSubject<ComicsResponse, Error>()
     private lazy var tableView: UITableView = {
@@ -34,6 +34,15 @@ class ComicsListViewController: UIViewController {
         super.viewDidLoad()
         bind()
         setup()
+    }
+    
+    init(comicListVM: ComicListViewModelProtocol) {
+        self.comicListVM = comicListVM
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
