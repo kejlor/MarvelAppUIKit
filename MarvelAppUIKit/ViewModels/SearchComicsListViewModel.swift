@@ -42,8 +42,17 @@ final class SearchComicsListViewModel: SearchComicsListViewModelProtocol {
             } receiveValue: { [weak self] (comics) in
                 self?.filteredComics = []
                 self?.filteredComics = comics.data.results.compactMap(ComicViewModel.init)
-                self?.comicsFetchedByTitle(true)
+                self?.checkComicsCount()
             }
             .store(in: &bag)
+    }
+    
+    private func checkComicsCount() {
+        if self.filteredComics.count == 0 {
+            self.willShowAlert(true)
+            self.comicsFetchedByTitle(false)
+        } else {
+            self.comicsFetchedByTitle(true)
+        }
     }
 }
