@@ -8,7 +8,11 @@
 import Foundation
 import Combine
 
-class NetworkService {
+protocol NetworkServiceProtocol {
+    func fetchData<T: Decodable>(url: String) -> AnyPublisher<T, Error>
+}
+
+class NetworkService: NetworkServiceProtocol {
     var session = URLSession.shared
     private var decoder = JSONDecoder()
     

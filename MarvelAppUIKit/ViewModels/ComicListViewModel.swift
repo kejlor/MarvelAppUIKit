@@ -8,10 +8,18 @@
 import Foundation
 import Combine
 
-final class ComicListViewModel {
+protocol ComicListViewModelProtocol {
+    func getComics()
+    func getMoreComics()
+    var comics: [ComicViewModel] { get }
+    var comicsFetched: (Bool) -> Void { get set }
+    var moreComicsFetched: (Bool) -> Void { get set }
+    var showErrorWhenGettingComics: (Bool) -> Void { get set }
+    var showErrorWhenGettingMoreComics: (Bool) -> Void { get set }
+}
+
+final class ComicListViewModel: ComicListViewModelProtocol {
     private(set) var comics = [ComicViewModel]()
-    private(set) var isShowingAlertGetComics = false
-    private(set) var isShowingAlertGetMoreComics = false
     private var comicsRepository: ComicsRepository
     private(set) var publisher: AnyPublisher<ComicsResponse, Error>?
     private var bag = Set<AnyCancellable>()

@@ -8,7 +8,14 @@
 import Foundation
 import Combine
 
-final class SearchComicsListViewModel {
+protocol SearchComicsListViewModelProtocol {
+    func getComicsByTitle(for title: String)
+    var filteredComics: [ComicViewModel] { get }
+    var comicsFetchedByTitle: (Bool) -> Void { get set }
+    var willShowAlert: (Bool) -> Void { get set }
+}
+
+final class SearchComicsListViewModel: SearchComicsListViewModelProtocol {
     private(set) var filteredComics = [ComicViewModel]()
     private var comicsRepository: ComicsRepository
     private var publisher: AnyPublisher<ComicsResponse, Error>?
@@ -35,8 +42,17 @@ final class SearchComicsListViewModel {
             } receiveValue: { [weak self] (comics) in
                 self?.filteredComics = []
                 self?.filteredComics = comics.data.results.compactMap(ComicViewModel.init)
-                self?.comicsFetchedByTitle(true)
+                self?.checkComicsCount()
             }
             .store(in: &bag)
+    }
+    
+    private func checkComicsCount() {
+        if self.filteredComics.count == 0 {
+            self.willShowAlert(true)
+            self.comicsFetchedByTitle(false)
+        } else {
+            self.comicsFetchedByTitle(true)
+        }
     }
 }

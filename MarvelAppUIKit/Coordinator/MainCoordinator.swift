@@ -6,30 +6,28 @@
 //
 
 import UIKit
+import Swinject
 
 class MainCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     weak var parent: Coordinator?
-    private let comicsListVC = ComicsListViewController()
+    var container = ViewControllerContainer.sharedContainer.container
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
     func getComicsListVC() -> ComicsListViewController {
-        return comicsListVC
+        return container.resolve(ComicsListViewController.self)!
     }
     
     func start() {
+        guard let comicsListVC = container.resolve(ComicsListViewController.self) else { return }
         comicsListVC.coordinator = self
         comicsListVC.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
         navigationController.pushViewController(comicsListVC, animated: false)
-    }
-    
-    func openDetailComicsView() {
-        let vc = DetailComicsView()
-        vc.coordinator = self
+        navigationController.pushViewController((container.resolve(ComicsListViewController.self)!), animated: false)
     }
     
     func childDidFinish(_ child: Coordinator) {

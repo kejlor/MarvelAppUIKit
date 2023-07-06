@@ -8,8 +8,14 @@
 import UIKit
 import Combine
 
-public class ComicsRepository {
-    private var networkService: NetworkService
+protocol ComicsRepositoryProtocol {
+    func fetchComics() -> AnyPublisher<ComicsResponse, Error>
+    func fetchMoreComics() -> AnyPublisher<ComicsResponse, Error>
+    func fetchComicsByTitle(title: String) -> AnyPublisher<ComicsResponse, Error>
+}
+
+public class ComicsRepository: ComicsRepositoryProtocol {
+    private var networkService: NetworkServiceProtocol
     private var baseURL = "https://gateway.marvel.com/v1/public/comics"
     private var offsetLimit = 0
     
@@ -17,7 +23,7 @@ public class ComicsRepository {
         return "\(baseURL)?ts=\(ENV.TIME_STAMP)&apikey=\(ENV.SERVICE_API_KEY)&hash=\(ENV.SERVICE_HASH)&limit=25&offset=\(offsetLimit)&orderBy=-onsaleDate"
     }
     
-    init(networkService: NetworkService) {
+    init(networkService: NetworkServiceProtocol) {
         self.networkService = networkService
     }
     

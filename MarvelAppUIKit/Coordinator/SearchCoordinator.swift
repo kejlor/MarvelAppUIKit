@@ -6,22 +6,24 @@
 //
 
 import UIKit
+import Swinject
 
 class SearchCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     weak var parent: Coordinator?
-    private let searchListVC = SearchListViewController()
+    var container = ViewControllerContainer.sharedContainer.container
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
     func getSearchListVC() -> SearchListViewController {
-        return searchListVC
+        return container.resolve(SearchListViewController.self)!
     }
     
     func start() {
+        guard let searchListVC = container.resolve(SearchListViewController.self) else { return }
         searchListVC.coordinator = self
         searchListVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
         navigationController.pushViewController(searchListVC, animated: false)

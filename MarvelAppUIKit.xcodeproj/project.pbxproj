@@ -25,6 +25,11 @@
 		5C15DCF02A4D8F6A00D2B1BB /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15DCEF2A4D8F6A00D2B1BB /* MainCoordinator.swift */; };
 		5C15DCF32A4D977E00D2B1BB /* SearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15DCF22A4D977E00D2B1BB /* SearchListViewController.swift */; };
 		5C15DCF62A4D986F00D2B1BB /* DetailComicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15DCF52A4D986F00D2B1BB /* DetailComicsView.swift */; };
+		5C63B6852A55779A000798AE /* ViewModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63B6842A55779A000798AE /* ViewModelContainer.swift */; };
+		5C63B6872A5577AA000798AE /* ViewControllerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63B6862A5577AA000798AE /* ViewControllerContainer.swift */; };
+		5C63B6892A5577C8000798AE /* RepositoryContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63B6882A5577C8000798AE /* RepositoryContainer.swift */; };
+		5C63B68C2A557911000798AE /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 5C63B68B2A557911000798AE /* Swinject */; };
+		5C63B68F2A558C1F000798AE /* ServicesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63B68E2A558C1F000798AE /* ServicesContainer.swift */; };
 		5C866EA12A4AF81F00F3305C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C866EA02A4AF81F00F3305C /* AppDelegate.swift */; };
 		5C866EAA2A4AF82200F3305C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C866EA92A4AF82200F3305C /* Assets.xcassets */; };
 		5C866EAD2A4AF82200F3305C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C866EAB2A4AF82200F3305C /* LaunchScreen.storyboard */; };
@@ -59,6 +64,10 @@
 		5C15DCEF2A4D8F6A00D2B1BB /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		5C15DCF22A4D977E00D2B1BB /* SearchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListViewController.swift; sourceTree = "<group>"; };
 		5C15DCF52A4D986F00D2B1BB /* DetailComicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailComicsView.swift; sourceTree = "<group>"; };
+		5C63B6842A55779A000798AE /* ViewModelContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelContainer.swift; sourceTree = "<group>"; };
+		5C63B6862A5577AA000798AE /* ViewControllerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerContainer.swift; sourceTree = "<group>"; };
+		5C63B6882A5577C8000798AE /* RepositoryContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryContainer.swift; sourceTree = "<group>"; };
+		5C63B68E2A558C1F000798AE /* ServicesContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesContainer.swift; sourceTree = "<group>"; };
 		5C866E9D2A4AF81F00F3305C /* MarvelAppUIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelAppUIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C866EA02A4AF81F00F3305C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C866EA92A4AF82200F3305C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -82,6 +91,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C15DCEC2A4C449600D2B1BB /* Kingfisher in Frameworks */,
+				5C63B68C2A557911000798AE /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +216,17 @@
 			path = DetailComicsView;
 			sourceTree = "<group>";
 		};
+		5C63B6832A557785000798AE /* Containers */ = {
+			isa = PBXGroup;
+			children = (
+				5C63B6842A55779A000798AE /* ViewModelContainer.swift */,
+				5C63B6862A5577AA000798AE /* ViewControllerContainer.swift */,
+				5C63B6882A5577C8000798AE /* RepositoryContainer.swift */,
+				5C63B68E2A558C1F000798AE /* ServicesContainer.swift */,
+			);
+			path = Containers;
+			sourceTree = "<group>";
+		};
 		5C866E942A4AF81F00F3305C = {
 			isa = PBXGroup;
 			children = (
@@ -225,6 +246,7 @@
 		5C866E9F2A4AF81F00F3305C /* MarvelAppUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				5C63B6832A557785000798AE /* Containers */,
 				5CEA6D892A4EC42200C8588D /* Components */,
 				5CEA6D7E2A4DAFF600C8588D /* Tabbar */,
 				5C15DCEE2A4D8F6000D2B1BB /* Coordinator */,
@@ -280,6 +302,7 @@
 			name = MarvelAppUIKit;
 			packageProductDependencies = (
 				5C15DCEB2A4C449600D2B1BB /* Kingfisher */,
+				5C63B68B2A557911000798AE /* Swinject */,
 			);
 			productName = MarvelAppUIKit;
 			productReference = 5C866E9D2A4AF81F00F3305C /* MarvelAppUIKit.app */;
@@ -312,6 +335,7 @@
 			mainGroup = 5C866E942A4AF81F00F3305C;
 			packageReferences = (
 				5C15DCEA2A4C449600D2B1BB /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				5C63B68A2A557911000798AE /* XCRemoteSwiftPackageReference "Swinject" */,
 			);
 			productRefGroup = 5C866E9E2A4AF81F00F3305C /* Products */;
 			projectDirPath = "";
@@ -346,7 +370,9 @@
 				5C15DCF62A4D986F00D2B1BB /* DetailComicsView.swift in Sources */,
 				5CEA6D842A4DB7E300C8588D /* CoordinatorProtocol.swift in Sources */,
 				5C15DCCB2A4B073300D2B1BB /* NetworkService.swift in Sources */,
+				5C63B6892A5577C8000798AE /* RepositoryContainer.swift in Sources */,
 				5C15DCB92A4B049B00D2B1BB /* Comic.swift in Sources */,
+				5C63B6852A55779A000798AE /* ViewModelContainer.swift in Sources */,
 				5CEA6D8D2A4EC9B100C8588D /* UIResponder+Utils.swift in Sources */,
 				5C15DCDC2A4B09C000D2B1BB /* String+Ext.swift in Sources */,
 				5CEA6D822A4DB4F300C8588D /* TabBarCoordinator.swift in Sources */,
@@ -366,6 +392,8 @@
 				5CFEEDB82A52D0C80002D1DB /* UIView+Ext.swift in Sources */,
 				5C15DCF02A4D8F6A00D2B1BB /* MainCoordinator.swift in Sources */,
 				5C866EA12A4AF81F00F3305C /* AppDelegate.swift in Sources */,
+				5C63B68F2A558C1F000798AE /* ServicesContainer.swift in Sources */,
+				5C63B6872A5577AA000798AE /* ViewControllerContainer.swift in Sources */,
 				5CFEEDB52A52CBDC0002D1DB /* SearchListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -595,6 +623,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		5C63B68A2A557911000798AE /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -602,6 +638,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5C15DCEA2A4C449600D2B1BB /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		5C63B68B2A557911000798AE /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C63B68A2A557911000798AE /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

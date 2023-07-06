@@ -8,7 +8,7 @@
 import UIKit
 
 class SearchListViewController: UIViewController {
-    private var searchListComicsVM: SearchComicsListViewModel = SearchComicsListViewModel()
+    private var searchListComicsVM: SearchComicsListViewModelProtocol
     private var searchListView = SearchListView()
     weak var coordinator: Coordinator?
     
@@ -20,6 +20,15 @@ class SearchListViewController: UIViewController {
         searchListView.searchTextField.delegate = self
         bind()
         layout()
+    }
+    
+    init(searchListComicsVM: SearchComicsListViewModelProtocol) {
+        self.searchListComicsVM = searchListComicsVM
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
