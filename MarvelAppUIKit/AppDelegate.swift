@@ -15,10 +15,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let tabBarController = UITabBarController()
     let container: Container = {
         let container = Container()
+        container.register(NetworkService.self) { _ in
+            NetworkService()
+        }
+        container.register(ComicsRepository.self) { r in
+            let controller = ComicsRepository(networkService: r.resolve(NetworkService.self)!)
+            return controller
+        }
+        container.register(ComicListViewModel.self) { r in
+            ComicListViewModel(comicsRepository: r.resolve(ComicsRepository.self)!)
+        }
         container.register(ComicsListViewController.self) { r in
             let controller = ComicsListViewController(comicListVM: r.resolve(ComicListViewModel.self)!)
             return controller
         }
+        
         return container
     }()
     
@@ -30,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.backgroundColor = .systemBackground
-        window?.rootViewController = container.resolve(ComicsListViewController.self)
+        window?.rootViewController = navController
         
         return true
     }
