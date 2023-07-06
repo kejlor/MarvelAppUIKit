@@ -18,7 +18,6 @@ protocol SearchComicsListViewModelProtocol {
 final class SearchComicsListViewModel: SearchComicsListViewModelProtocol {
     private(set) var filteredComics = [ComicViewModel]()
     private var comicsRepository: ComicsRepository
-    private var publisher: AnyPublisher<ComicsResponse, Error>?
     private var bag = Set<AnyCancellable>()
     var comicsFetchedByTitle: (Bool) -> Void = {_ in}
     var willShowAlert: (Bool) -> Void = {_ in}

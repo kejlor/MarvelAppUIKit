@@ -27,7 +27,6 @@ class MainCoordinator: Coordinator {
         comicsListVC.coordinator = self
         comicsListVC.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
         navigationController.pushViewController(comicsListVC, animated: false)
-        navigationController.pushViewController((container.resolve(ComicsListViewController.self)!), animated: false)
     }
     
     func childDidFinish(_ child: Coordinator) {

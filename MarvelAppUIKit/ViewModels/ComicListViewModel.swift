@@ -21,7 +21,6 @@ protocol ComicListViewModelProtocol {
 final class ComicListViewModel: ComicListViewModelProtocol {
     private(set) var comics = [ComicViewModel]()
     private var comicsRepository: ComicsRepository
-    private(set) var publisher: AnyPublisher<ComicsResponse, Error>?
     private var bag = Set<AnyCancellable>()
     var comicsFetched: (Bool) -> Void = {_ in}
     var moreComicsFetched: (Bool) -> Void = {_ in}
