@@ -19,6 +19,6 @@ class ServicesContainer {
     private func setupContainer() {
         container.register(NetworkServiceProtocol.self) { _ in
             return NetworkService()
-        }
+        }.inObjectScope(.container)
     }
 }
