@@ -12,21 +12,22 @@ class MainCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     weak var parent: Coordinator?
-    weak var container: Container?
+    var viewControllerContainer = ViewControllerContainer.sharedConainer
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
     func getComicsListVC() -> ComicsListViewController {
-        return (self.container?.resolve(ComicsListViewController.self)!)!
+        return viewControllerContainer.container.resolve(ComicsListViewController.self)!
     }
     
     func start() {
-        guard let comicsListVC = self.container?.resolve(ComicsListViewController.self) else { return }
+        guard let comicsListVC = viewControllerContainer.container.resolve(ComicsListViewController.self) else { return }
         comicsListVC.coordinator = self
         comicsListVC.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
         navigationController.pushViewController(comicsListVC, animated: false)
+        navigationController.pushViewController((viewControllerContainer.container.resolve(ComicsListViewController.self)!), animated: false)
     }
     
     func childDidFinish(_ child: Coordinator) {
