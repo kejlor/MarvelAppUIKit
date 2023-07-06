@@ -9,7 +9,7 @@ import Foundation
 import Swinject
 
 class ViewControllerContainer {
-    static let sharedConainer = ViewControllerContainer()
+    static let sharedContainer = ViewControllerContainer()
     let container = Container()
     let viewModelContainer = ViewModelContainer.sharedContainer
     
