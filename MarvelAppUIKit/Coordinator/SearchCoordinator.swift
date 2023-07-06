@@ -12,18 +12,18 @@ class SearchCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     weak var parent: Coordinator?
-    var container = ViewControllerContainer.self
+    var container = ViewControllerContainer.sharedContainer.container
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
     func getSearchListVC() -> SearchListViewController {
-        return container.sharedContainer.container.resolve(SearchListViewController.self)!
+        return container.resolve(SearchListViewController.self)!
     }
     
     func start() {
-        guard let searchListVC = container.sharedContainer.container.resolve(SearchListViewController.self) else { return }
+        guard let searchListVC = container.resolve(SearchListViewController.self) else { return }
         searchListVC.coordinator = self
         searchListVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
         navigationController.pushViewController(searchListVC, animated: false)
