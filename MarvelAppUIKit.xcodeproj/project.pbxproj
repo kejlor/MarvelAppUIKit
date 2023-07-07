@@ -45,8 +45,7 @@
 		5C15DCEF2A4D8F6A00D2B1BB /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		5C15DCF22A4D977E00D2B1BB /* SearchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListViewController.swift; sourceTree = "<group>"; };
 		5C15DCF52A4D986F00D2B1BB /* DetailComicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailComicsView.swift; sourceTree = "<group>"; };
-		5C1892082A582FCF00A17A4A /* Models */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Models; path = ../../Models; sourceTree = "<group>"; };
-		5C5DF4702A580ABE00F473DA /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Core; path = ../../Core; sourceTree = "<group>"; };
+		5C18920E2A583D9600A17A4A /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Core; path = Packages/Core; sourceTree = "<group>"; };
 		5C63B6842A55779A000798AE /* ViewModelContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelContainer.swift; sourceTree = "<group>"; };
 		5C63B6862A5577AA000798AE /* ViewControllerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerContainer.swift; sourceTree = "<group>"; };
 		5C63B6882A5577C8000798AE /* RepositoryContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryContainer.swift; sourceTree = "<group>"; };
@@ -55,7 +54,6 @@
 		5C866EA02A4AF81F00F3305C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C866EAC2A4AF82200F3305C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C866EAE2A4AF82200F3305C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5C8BA7A02A582C08006BD972 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Networking; path = ../../Networking; sourceTree = "<group>"; };
 		5CEA6D7C2A4DAE2900C8588D /* EmptySearchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySearchListView.swift; sourceTree = "<group>"; };
 		5CEA6D7F2A4DB00800C8588D /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		5CEA6D812A4DB4F300C8588D /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
@@ -164,9 +162,6 @@
 		5C5DF46F2A580A9200F473DA /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				5C1892082A582FCF00A17A4A /* Models */,
-				5C8BA7A02A582C08006BD972 /* Networking */,
-				5C5DF4702A580ABE00F473DA /* Core */,
 			);
 			path = Packages;
 			sourceTree = "<group>";
@@ -192,6 +187,7 @@
 		5C866E942A4AF81F00F3305C = {
 			isa = PBXGroup;
 			children = (
+				5C18920E2A583D9600A17A4A /* Core */,
 				5C5DF46F2A580A9200F473DA /* Packages */,
 				5C866E9F2A4AF81F00F3305C /* MarvelAppUIKit */,
 				5C866E9E2A4AF81F00F3305C /* Products */,

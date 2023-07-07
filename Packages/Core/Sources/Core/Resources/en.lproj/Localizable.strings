@@ -1,0 +1,52 @@
+/* 
+  Localizable.strings
+  
+
+  Created by Bartosz Wojtkowiak on 07/07/2023.
+  
+*/
+
+// ComicListViewModel
+"DetailText" = "detail";
+
+// ComicListEntry
+"WrittenByText" = "written by %@";
+
+// FindOutButton
+"FindOutButtonText" = "Find out more";
+
+// DismissSheetButton
+"DismissButtonText" = "Dismiss";
+
+// ComicViewModel
+"ComicViewModelTitleNotFound" = "Title not found";
+"ComicViewModelEmptyDescription" = "Empty description";
+"ComicViewModelCreatorsEmpty" = "Creators not found";
+"ComicViewModelDetail" = "detail";
+"ComicViewModelMoreData" = "More data not found";
+
+// ComicsListViewController
+"ComicsListViewController" = "Marvel Comics";
+"ComicsListViewControllerErrorWhileGetComicsTitle" = "Network Error";
+"ComicsListViewControllerErrorWhileGetComicsMessage" = "Unable to fetch comics. Try again.";
+"ComicsListViewControllerErrorWhileGetMoreComicsTitle" = "Network Error";
+"ComicsListViewControllerErrorWhileGetMoreComicsMessage" = "Unable to fetch more comics. Try again.";
+"ComicsListViewControllerAlertButtonTitle" = "Ok";
+
+// ComicsCell
+"ComicsCellComicTitle" = "Comics title";
+"ComicsCellComicWritters" = "Comics writters";
+"ComicsCellComicDescription" = "Comics description";
+
+// EmptySearchListView
+"EmptySearchListViewLabelMessage" = "Start typing to find particular comics.";
+"EmptySearchListViewComicsNotFound" = "Comics not found. Try providing a correct title.";
+
+// SearchListViewController
+"SearchListViewControllerSearchTextFieldPlaceholder" = "Search comics by title";
+"SearchListViewControllerAlertTitle" = "Network Error";
+"SearchListViewControllerAlertMessage" = "Unable to fetch comics. Please provide correct title.";
+"SearchListViewControllerAlertButtonTitle" = "Ok";
+
+// DetailComicsView
+"DetailComicsViewTitle" = "Welcome to the detail view";
