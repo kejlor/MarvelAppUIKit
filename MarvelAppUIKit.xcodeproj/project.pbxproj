@@ -30,7 +30,6 @@
 		5C63B68C2A557911000798AE /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 5C63B68B2A557911000798AE /* Swinject */; };
 		5C63B68F2A558C1F000798AE /* ServicesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63B68E2A558C1F000798AE /* ServicesContainer.swift */; };
 		5C866EA12A4AF81F00F3305C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C866EA02A4AF81F00F3305C /* AppDelegate.swift */; };
-		5C866EAA2A4AF82200F3305C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C866EA92A4AF82200F3305C /* Assets.xcassets */; };
 		5C866EAD2A4AF82200F3305C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C866EAB2A4AF82200F3305C /* LaunchScreen.storyboard */; };
 		5CEA6D7D2A4DAE2900C8588D /* EmptySearchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA6D7C2A4DAE2900C8588D /* EmptySearchListView.swift */; };
 		5CEA6D802A4DB00800C8588D /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA6D7F2A4DB00800C8588D /* TabBarController.swift */; };
@@ -65,7 +64,6 @@
 		5C63B68E2A558C1F000798AE /* ServicesContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesContainer.swift; sourceTree = "<group>"; };
 		5C866E9D2A4AF81F00F3305C /* MarvelAppUIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelAppUIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C866EA02A4AF81F00F3305C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5C866EA92A4AF82200F3305C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C866EAC2A4AF82200F3305C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C866EAE2A4AF82200F3305C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CEA6D7C2A4DAE2900C8588D /* EmptySearchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySearchListView.swift; sourceTree = "<group>"; };
@@ -251,7 +249,6 @@
 				5C15DCC32A4B060000D2B1BB /* Keys */,
 				5C15DCB72A4B048100D2B1BB /* Models */,
 				5C866EA02A4AF81F00F3305C /* AppDelegate.swift */,
-				5C866EA92A4AF82200F3305C /* Assets.xcassets */,
 				5C866EAB2A4AF82200F3305C /* LaunchScreen.storyboard */,
 				5C866EAE2A4AF82200F3305C /* Info.plist */,
 			);
@@ -345,7 +342,6 @@
 			files = (
 				5C15DCC52A4B061500D2B1BB /* Keys.plist in Resources */,
 				5C866EAD2A4AF82200F3305C /* LaunchScreen.storyboard in Resources */,
-				5C866EAA2A4AF82200F3305C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
