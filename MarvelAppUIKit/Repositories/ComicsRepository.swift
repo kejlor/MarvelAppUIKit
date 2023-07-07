@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import Networking
 
 protocol ComicsRepositoryProtocol {
     func fetchComics() -> AnyPublisher<ComicsResponse, Error>
