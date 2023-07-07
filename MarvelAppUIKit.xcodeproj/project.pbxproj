@@ -47,6 +47,7 @@
 		5C15DCF52A4D986F00D2B1BB /* DetailComicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailComicsView.swift; sourceTree = "<group>"; };
 		5C18920E2A583D9600A17A4A /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Core; path = Packages/Core; sourceTree = "<group>"; };
 		5C18920F2A583F4D00A17A4A /* Models */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Models; path = Packages/Models; sourceTree = "<group>"; };
+		5C1892102A583FB900A17A4A /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Networking; path = Packages/Networking; sourceTree = "<group>"; };
 		5C63B6842A55779A000798AE /* ViewModelContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelContainer.swift; sourceTree = "<group>"; };
 		5C63B6862A5577AA000798AE /* ViewControllerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerContainer.swift; sourceTree = "<group>"; };
 		5C63B6882A5577C8000798AE /* RepositoryContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryContainer.swift; sourceTree = "<group>"; };
@@ -188,6 +189,7 @@
 		5C866E942A4AF81F00F3305C = {
 			isa = PBXGroup;
 			children = (
+				5C1892102A583FB900A17A4A /* Networking */,
 				5C18920F2A583F4D00A17A4A /* Models */,
 				5C18920E2A583D9600A17A4A /* Core */,
 				5C5DF46F2A580A9200F473DA /* Packages */,
