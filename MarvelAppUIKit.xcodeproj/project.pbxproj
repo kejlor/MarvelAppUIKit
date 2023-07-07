@@ -16,8 +16,9 @@
 		5C15DCF02A4D8F6A00D2B1BB /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15DCEF2A4D8F6A00D2B1BB /* MainCoordinator.swift */; };
 		5C15DCF32A4D977E00D2B1BB /* SearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15DCF22A4D977E00D2B1BB /* SearchListViewController.swift */; };
 		5C15DCF62A4D986F00D2B1BB /* DetailComicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15DCF52A4D986F00D2B1BB /* DetailComicsView.swift */; };
-		5C18920A2A58314600A17A4A /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = 5C1892092A58314600A17A4A /* Models */; };
-		5C5DF4732A580B4B00F473DA /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 5C5DF4722A580B4B00F473DA /* Core */; };
+		5C1892162A58418C00A17A4A /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 5C1892152A58418C00A17A4A /* Core */; };
+		5C1892182A58418C00A17A4A /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = 5C1892172A58418C00A17A4A /* Models */; };
+		5C18921A2A58418C00A17A4A /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 5C1892192A58418C00A17A4A /* Networking */; };
 		5C63B6852A55779A000798AE /* ViewModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63B6842A55779A000798AE /* ViewModelContainer.swift */; };
 		5C63B6872A5577AA000798AE /* ViewControllerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63B6862A5577AA000798AE /* ViewControllerContainer.swift */; };
 		5C63B6892A5577C8000798AE /* RepositoryContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63B6882A5577C8000798AE /* RepositoryContainer.swift */; };
@@ -25,7 +26,6 @@
 		5C63B68F2A558C1F000798AE /* ServicesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63B68E2A558C1F000798AE /* ServicesContainer.swift */; };
 		5C866EA12A4AF81F00F3305C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C866EA02A4AF81F00F3305C /* AppDelegate.swift */; };
 		5C866EAD2A4AF82200F3305C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C866EAB2A4AF82200F3305C /* LaunchScreen.storyboard */; };
-		5C8BA7A22A582CF3006BD972 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 5C8BA7A12A582CF3006BD972 /* Networking */; };
 		5CEA6D7D2A4DAE2900C8588D /* EmptySearchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA6D7C2A4DAE2900C8588D /* EmptySearchListView.swift */; };
 		5CEA6D802A4DB00800C8588D /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA6D7F2A4DB00800C8588D /* TabBarController.swift */; };
 		5CEA6D822A4DB4F300C8588D /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA6D812A4DB4F300C8588D /* TabBarCoordinator.swift */; };
@@ -71,11 +71,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C18920A2A58314600A17A4A /* Models in Frameworks */,
 				5C15DCEC2A4C449600D2B1BB /* Kingfisher in Frameworks */,
 				5C63B68C2A557911000798AE /* Swinject in Frameworks */,
-				5C8BA7A22A582CF3006BD972 /* Networking in Frameworks */,
-				5C5DF4732A580B4B00F473DA /* Core in Frameworks */,
+				5C1892182A58418C00A17A4A /* Models in Frameworks */,
+				5C18921A2A58418C00A17A4A /* Networking in Frameworks */,
+				5C1892162A58418C00A17A4A /* Core in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,9 +262,9 @@
 			packageProductDependencies = (
 				5C15DCEB2A4C449600D2B1BB /* Kingfisher */,
 				5C63B68B2A557911000798AE /* Swinject */,
-				5C5DF4722A580B4B00F473DA /* Core */,
-				5C8BA7A12A582CF3006BD972 /* Networking */,
-				5C1892092A58314600A17A4A /* Models */,
+				5C1892152A58418C00A17A4A /* Core */,
+				5C1892172A58418C00A17A4A /* Models */,
+				5C1892192A58418C00A17A4A /* Networking */,
 			);
 			productName = MarvelAppUIKit;
 			productReference = 5C866E9D2A4AF81F00F3305C /* MarvelAppUIKit.app */;
@@ -580,22 +580,22 @@
 			package = 5C15DCEA2A4C449600D2B1BB /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
-		5C1892092A58314600A17A4A /* Models */ = {
+		5C1892152A58418C00A17A4A /* Core */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Core;
+		};
+		5C1892172A58418C00A17A4A /* Models */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Models;
 		};
-		5C5DF4722A580B4B00F473DA /* Core */ = {
+		5C1892192A58418C00A17A4A /* Networking */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Core;
+			productName = Networking;
 		};
 		5C63B68B2A557911000798AE /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5C63B68A2A557911000798AE /* XCRemoteSwiftPackageReference "Swinject" */;
 			productName = Swinject;
-		};
-		5C8BA7A12A582CF3006BD972 /* Networking */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Networking;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
