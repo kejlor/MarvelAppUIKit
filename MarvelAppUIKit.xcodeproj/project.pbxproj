@@ -41,7 +41,6 @@
 		5CEA6D882A4EC0E600C8588D /* SearchComicsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA6D872A4EC0E600C8588D /* SearchComicsListViewModel.swift */; };
 		5CEA6D8B2A4EC43600C8588D /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEA6D8A2A4EC43600C8588D /* SearchTextField.swift */; };
 		5CFEEDB52A52CBDC0002D1DB /* SearchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFEEDB42A52CBDC0002D1DB /* SearchListView.swift */; };
-		5CFEEDB82A52D0C80002D1DB /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFEEDB72A52D0C80002D1DB /* UIView+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,7 +79,6 @@
 		5CEA6D872A4EC0E600C8588D /* SearchComicsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchComicsListViewModel.swift; sourceTree = "<group>"; };
 		5CEA6D8A2A4EC43600C8588D /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		5CFEEDB42A52CBDC0002D1DB /* SearchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListView.swift; sourceTree = "<group>"; };
-		5CFEEDB72A52D0C80002D1DB /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,14 +164,6 @@
 				5C15DCD92A4B099600D2B1BB /* Localizable.strings */,
 			);
 			path = Localizables;
-			sourceTree = "<group>";
-		};
-		5C15DCDA2A4B09B700D2B1BB /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				5CFEEDB72A52D0C80002D1DB /* UIView+Ext.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		5C15DCDD2A4B13B800D2B1BB /* ComicsListView */ = {
@@ -264,7 +254,6 @@
 				5CEA6D892A4EC42200C8588D /* Components */,
 				5CEA6D7E2A4DAFF600C8588D /* Tabbar */,
 				5C15DCEE2A4D8F6000D2B1BB /* Coordinator */,
-				5C15DCDA2A4B09B700D2B1BB /* Extensions */,
 				5C15DCD42A4B096700D2B1BB /* Localizables */,
 				5C15DCD02A4B08BD00D2B1BB /* Views */,
 				5C15DCCF2A4B08B200D2B1BB /* ViewModels */,
@@ -402,7 +391,6 @@
 				5C15DCC12A4B052B00D2B1BB /* UrlResponse.swift in Sources */,
 				5C15DCF32A4D977E00D2B1BB /* SearchListViewController.swift in Sources */,
 				5C15DCD22A4B090500D2B1BB /* ComicListViewModel.swift in Sources */,
-				5CFEEDB82A52D0C80002D1DB /* UIView+Ext.swift in Sources */,
 				5C15DCF02A4D8F6A00D2B1BB /* MainCoordinator.swift in Sources */,
 				5C866EA12A4AF81F00F3305C /* AppDelegate.swift in Sources */,
 				5C63B68F2A558C1F000798AE /* ServicesContainer.swift in Sources */,
