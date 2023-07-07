@@ -17,7 +17,6 @@
 		5C15DCCB2A4B073300D2B1BB /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15DCCA2A4B073300D2B1BB /* NetworkService.swift */; };
 		5C15DCCE2A4B077900D2B1BB /* ComicsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15DCCD2A4B077900D2B1BB /* ComicsRepository.swift */; };
 		5C15DCD22A4B090500D2B1BB /* ComicListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15DCD12A4B090500D2B1BB /* ComicListViewModel.swift */; };
-		5C15DCD72A4B099600D2B1BB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C15DCD92A4B099600D2B1BB /* Localizable.strings */; };
 		5C15DCDF2A4B148C00D2B1BB /* ComicsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15DCDE2A4B148C00D2B1BB /* ComicsListViewController.swift */; };
 		5C15DCE32A4C134600D2B1BB /* ComicsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15DCE22A4C134600D2B1BB /* ComicsCell.swift */; };
 		5C15DCEC2A4C449600D2B1BB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5C15DCEB2A4C449600D2B1BB /* Kingfisher */; };
@@ -54,10 +53,8 @@
 		5C15DCCA2A4B073300D2B1BB /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		5C15DCCD2A4B077900D2B1BB /* ComicsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsRepository.swift; sourceTree = "<group>"; };
 		5C15DCD12A4B090500D2B1BB /* ComicListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicListViewModel.swift; sourceTree = "<group>"; };
-		5C15DCD82A4B099600D2B1BB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5C15DCDE2A4B148C00D2B1BB /* ComicsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsListViewController.swift; sourceTree = "<group>"; };
 		5C15DCE22A4C134600D2B1BB /* ComicsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsCell.swift; sourceTree = "<group>"; };
-		5C15DCED2A4D784B00D2B1BB /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5C15DCEF2A4D8F6A00D2B1BB /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		5C15DCF22A4D977E00D2B1BB /* SearchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListViewController.swift; sourceTree = "<group>"; };
 		5C15DCF52A4D986F00D2B1BB /* DetailComicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailComicsView.swift; sourceTree = "<group>"; };
@@ -158,14 +155,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		5C15DCD42A4B096700D2B1BB /* Localizables */ = {
-			isa = PBXGroup;
-			children = (
-				5C15DCD92A4B099600D2B1BB /* Localizable.strings */,
-			);
-			path = Localizables;
-			sourceTree = "<group>";
-		};
 		5C15DCDD2A4B13B800D2B1BB /* ComicsListView */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,7 +243,6 @@
 				5CEA6D892A4EC42200C8588D /* Components */,
 				5CEA6D7E2A4DAFF600C8588D /* Tabbar */,
 				5C15DCEE2A4D8F6000D2B1BB /* Coordinator */,
-				5C15DCD42A4B096700D2B1BB /* Localizables */,
 				5C15DCD02A4B08BD00D2B1BB /* Views */,
 				5C15DCCF2A4B08B200D2B1BB /* ViewModels */,
 				5C15DCCC2A4B076B00D2B1BB /* Repositories */,
@@ -356,7 +344,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C15DCC52A4B061500D2B1BB /* Keys.plist in Resources */,
-				5C15DCD72A4B099600D2B1BB /* Localizable.strings in Resources */,
 				5C866EAD2A4AF82200F3305C /* LaunchScreen.storyboard in Resources */,
 				5C866EAA2A4AF82200F3305C /* Assets.xcassets in Resources */,
 			);
@@ -402,15 +389,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		5C15DCD92A4B099600D2B1BB /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5C15DCD82A4B099600D2B1BB /* en */,
-				5C15DCED2A4D784B00D2B1BB /* pl */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
 		5C866EAB2A4AF82200F3305C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
