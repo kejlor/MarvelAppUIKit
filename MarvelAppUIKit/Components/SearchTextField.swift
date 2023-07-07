@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Core
 
 protocol SearchTextFieldDelegate: AnyObject {
     func editingDidEnd(_ sender: SearchTextField)

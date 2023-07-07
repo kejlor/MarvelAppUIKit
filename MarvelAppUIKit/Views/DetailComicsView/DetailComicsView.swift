@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Core
 
 class DetailComicsView: UIViewController {
     weak var coordinator: MainCoordinator?
