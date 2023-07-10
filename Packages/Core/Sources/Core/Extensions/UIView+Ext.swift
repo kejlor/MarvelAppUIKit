@@ -1,13 +1,13 @@
 //
 //  UIView+Ext.swift
-//  MarvelAppUIKit
+//  
 //
-//  Created by Bartosz Wojtkowiak on 03/07/2023.
+//  Created by Bartosz Wojtkowiak on 07/07/2023.
 //
 
 import UIKit
 
-extension UIView {
+public extension UIView {
     func addSubviews(_ views: UIView...) {
         views.forEach{ self.addSubview($0)}
     }
@@ -28,7 +28,7 @@ extension UIView {
         return safeAreaLayoutGuide.rightAnchor
     }
 
-    public func anchor(top: NSLayoutYAxisAnchor? = nil,
+    func anchor(top: NSLayoutYAxisAnchor? = nil,
                        left: NSLayoutXAxisAnchor? = nil,
                        bottom: NSLayoutYAxisAnchor? = nil,
                        right: NSLayoutXAxisAnchor? = nil,

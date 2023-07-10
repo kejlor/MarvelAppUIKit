@@ -1,16 +1,16 @@
 //
 //  String+Ext.swift
-//  MarvelAppUIKit
+//  
 //
-//  Created by Bartosz Wojtkowiak on 27/06/2023.
+//  Created by Bartosz Wojtkowiak on 07/07/2023.
 //
 
 import Foundation
 
-extension String {
+public extension String {
     
     var localized: String {
-        return NSLocalizedString(self, comment: "\(self)_comment")
+        return NSLocalizedString(self, bundle: .module, comment: "\(self)_comment")
     }
     
     func localized(_ args: [CVarArg]) -> String {
@@ -21,3 +21,4 @@ extension String {
         return String(format: localized, args)
     }
 }
+

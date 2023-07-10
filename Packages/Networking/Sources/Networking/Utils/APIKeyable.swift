@@ -1,17 +1,17 @@
 //
 //  APIKeyable.swift
-//  MarvelAppUIKit
+//  
 //
-//  Created by Bartosz Wojtkowiak on 27/06/2023.
+//  Created by Bartosz Wojtkowiak on 07/07/2023.
 //
 
 import Foundation
 
-class BaseENV {
+public class BaseENV {
     let dict: NSDictionary
     
     init(resourceName: String) {
-        guard let filePath = Bundle.main.path(forResource: resourceName, ofType: "plist") else {
+        guard let filePath = Bundle.module.path(forResource: resourceName, ofType: "plist") else {
             fatalError("Couldn't find file '\(resourceName).plist'.")
         }
         
@@ -22,30 +22,34 @@ class BaseENV {
     }
 }
 
-protocol APIKeyable {
+public protocol APIKeyable {
     var SERVICE_API_KEY: String { get }
     var TIME_STAMP: String { get }
     var SERVICE_HASH: String { get }
 }
 
-final class ProdENV: BaseENV, APIKeyable {
+public final class ProdENV: BaseENV, APIKeyable {
     init() {
         super.init(resourceName: "Keys")
     }
     
-    var SERVICE_API_KEY: String {
+    public var SERVICE_API_KEY: String {
         return dict.object(forKey: "SERVICE_API_KEY") as? String ?? ""
     }
     
-    var TIME_STAMP: String {
+    public var TIME_STAMP: String {
         return dict.object(forKey: "TIME_STAMP") as? String ?? ""
     }
     
-    var SERVICE_HASH: String {
+    public var SERVICE_HASH: String {
         return dict.object(forKey: "SERVICE_HASH") as? String ?? ""
+    }
+    
+    func getAPIKey() -> String? {
+        return dict.object(forKey: "SERVICE_API_KEY") as? String ?? ""
     }
 }
 
-var ENV: APIKeyable {
+public var ENV: APIKeyable {
     return ProdENV()
 }

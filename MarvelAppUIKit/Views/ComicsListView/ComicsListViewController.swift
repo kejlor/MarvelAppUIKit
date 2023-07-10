@@ -7,6 +7,8 @@
 
 import UIKit
 import Combine
+import Core
+import Models
 
 class ComicsListViewController: UIViewController {
     var comicListVM: ComicListViewModelProtocol
